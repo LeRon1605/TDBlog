@@ -13,8 +13,12 @@ public abstract class BaseServlet extends HttpServlet {
 	protected AuthContext authContext;
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.service(req, resp);
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		authContext = new AuthContext(req);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		authContext = new AuthContext(req);
 	}
 }

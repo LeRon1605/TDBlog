@@ -1,0 +1,26 @@
+@charset "UTF-8";
+.main {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Helvetica', sans-serif;
+}
+
+input {
+    width: 20rem;
+    border: 1px solid #E5E5E5;
+    outline: none;
+    transition: .5s;
+}
+
+input:focus {
+    border: 1px solid #2FB5FA;
+}
+
+input[type="submit"] {
+    background-color: #2FB5FA;
+    color: white
+}
+
+img {
+    width: 10rem;
+}

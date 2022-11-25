@@ -4,6 +4,10 @@ public class Claim {
 	private String name;
 	private String value;
 	
+	public Claim() {
+		
+	}
+	
 	public Claim(String name, String value) {
 		this.name = name;
 		this.value = value;

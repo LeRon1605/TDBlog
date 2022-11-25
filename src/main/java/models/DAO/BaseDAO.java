@@ -75,6 +75,7 @@ public abstract class BaseDAO<T> {
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet result = statement.executeQuery(sql); 
+				result.next();
 				T entity = _mapper.map(result);
 				connection.close();
 				return entity;
@@ -92,7 +93,8 @@ public abstract class BaseDAO<T> {
 		if (connection != null) {
 			try {
 				PreparedStatement statement = getPrepareStatement(connection, sql, params);
-				ResultSet result = statement.executeQuery(); 
+				ResultSet result = statement.executeQuery();
+				result.next();
 				T entity = _mapper.map(result);
 				connection.close();
 				return entity;
@@ -153,8 +155,10 @@ public abstract class BaseDAO<T> {
 				statement.setBoolean(i + 1, (boolean)params[i]);
 			}else if (params[i] instanceof Date) {
 				statement.setDate(i + 1, (Date)params[i]);
+			}else if (params[i] instanceof Timestamp) {
+				statement.setTimestamp(i + 1, (Timestamp)params[i]);
 			}else {
-				throw new IllegalArgumentException("Invalid type");
+				statement.setObject(i + 1, params[i]);
 			}
 		}
 		return statement;
