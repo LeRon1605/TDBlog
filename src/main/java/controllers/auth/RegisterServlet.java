@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controllers.BaseServlet;
+import core.Validator.ValidateResult;
+import core.Validator.Validator;
 import models.BO.UserBO;
 import models.Bean.User;
 
@@ -39,13 +41,21 @@ public class RegisterServlet extends BaseServlet{
 			user.setUsername((String)req.getParameter("username"));
 			user.setPassword((String)req.getParameter("password"));
 			
-			boolean result = userBO.register(user);
+			ValidateResult modelState = Validator.validate(user);
 			
-			if (result == false) {
-				req.setAttribute("error", "Tài khoản đã tồn tại");
+			if (modelState.isFailure()) 
+			{
+				req.setAttribute("validation-error", modelState.getMessages());
 				doGet(req, resp);
-			}else {
-				resp.sendRedirect("/auth/login");
+			} else {
+				boolean result = userBO.register(user);
+				
+				if (result == false) {
+					req.setAttribute("error", "Tài khoản đã tồn tại");
+					doGet(req, resp);
+				}else {
+					resp.sendRedirect("/auth/login");
+				}
 			}
 		}
 	}

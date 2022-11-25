@@ -19,13 +19,23 @@
 			  	<%= request.getAttribute("error") %>
 			</div>
 		<% } %>
-        <form class="d-flex flex-column align-items-center justify-content-center" action="/auth/register" method="POST">
+        <form class="d-flex flex-column align-items-center justify-content-center has-validation" action="/auth/register" method="POST">
             <input class="mb-3 p-2" type="text" placeholder="Họ và tên" name="name"/>
             <input class="mb-3 p-2" type="text" placeholder="Tên đăng nhập" name="username"/>
             <input class="mb-3 p-2" type="password" placeholder="Mật khẩu" name="password"/>
             <input class="mb-3 p-2" type="password" placeholder="Xác nhận mật khẩu"/>
             <input class="mb-3 p-2 text-center" value="Đăng kí" type="submit"/>
         </form>
+        <% if (request.getAttribute("validation-error") != null) { %>
+			  	<% 
+			  		String[] validationError = (String[])request.getAttribute("validation-error"); 
+			  		for (String message: validationError) {
+			  	%>
+			  	<div class="alert alert-danger text-center" role="alert" style="width: 20rem">		
+		  			<%= message %>
+		  		</div>
+		  		<%  } %>
+		<% } %>
         <span>Đã có tài khoản? <a href="/auth/login"> Đăng nhập ngay</a></span>
     </div>        
 </body>
