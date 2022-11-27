@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import core.Auth.AuthContext;
 
@@ -21,12 +22,13 @@ public class AuthorizationFilter implements Filter{
 			throws IOException, ServletException {
 		AuthContext context = new AuthContext((HttpServletRequest)request);
 		if (!context.isAuthenticated())
-			request.getRequestDispatcher("/views/errors/unauthorized.jsp").forward(request, response);
-		if (((HttpServletRequest)request).getServletPath().startsWith("/admin")){
-			if (!context.isInRole("Admin")) {
-				request.getRequestDispatcher("/views/errors/unauthorized.jsp").forward(request, response);
+			((HttpServletResponse)response).sendRedirect("/auth/login");
+		else 
+			if (((HttpServletRequest)request).getServletPath().startsWith("/admin")){
+				if (!context.isInRole("Admin")) {
+					request.getRequestDispatcher("/views/errors/unauthorized.jsp").forward(request, response);
+				}
 			}
-		}
 			
 	}
 

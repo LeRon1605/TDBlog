@@ -19,7 +19,7 @@
 		<% } %>
         <form class="d-flex flex-column align-items-center justify-content-center" action="/auth/login" method="POST">
             <input class="mb-3 p-2" placeholder="Tên đăng nhập" name="username"/>
-            <input class="mb-3 p-2" placeholder="Mật khẩu" name="password"/>
+            <input class="mb-3 p-2" placeholder="Mật khẩu" name="password" type="password"/>
             <input class="mb-3 p-2 text-center" value="Đăng nhập" type="submit"/>
         </form>
         <span>Không có tài khoản? <a href="/auth/register"> Đăng kí ngay</a></span>
