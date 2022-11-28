@@ -19,8 +19,10 @@ public class UserBO extends BaseBO{
 	
 	public boolean register(User user) {
 		boolean isExist = userDAO.findByUsername(user.getUsername()) != null;
-		if (isExist) 
+		if (isExist) {
 			return false;
+		}
+			
 		
 		user.setID(generateID());
 		user.setPassword(MD5.Hash(user.getPassword()));
