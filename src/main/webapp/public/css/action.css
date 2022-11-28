@@ -1,0 +1,12 @@
+.header__news-user:hover .header__news-subUser {
+  display: block;
+}
+
+.header__news-user::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  height: 20px;
+  width: 200px;
+  z-index: 15;
+}
