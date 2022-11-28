@@ -49,7 +49,6 @@ public class RegisterServlet extends BaseServlet{
 				doGet(req, resp);
 			} else {
 				boolean result = userBO.register(user);
-				
 				if (result == false) {
 					req.setAttribute("error", "Tài khoản đã tồn tại");
 					doGet(req, resp);

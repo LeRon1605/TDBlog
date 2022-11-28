@@ -22,6 +22,36 @@ public class PostBO extends BaseBO{
 		return postDAO.getAllWithPostAndAuthor();
 	}
 	
+	public boolean updateView(String id, int view) {
+		if (id == null || id.isEmpty()) {
+			return false;
+		}
+		Post post = postDAO.getById(id);
+		if (post == null) {
+			return false;
+		}
+		return postDAO.updateView(id, post.getViewCount() + view);
+	}
+  
+	public Post getById(String id) {
+		return postDAO.getById(id);
+	}
+  
+	public boolean deletePost(String id) {
+		if (id == null || id.isEmpty()) {
+			return false;
+		}
+		Post post = postDAO.getById(id);
+		if (post == null) {
+			return false;
+		}
+		return postDAO.deletePost(id);
+	}
+  
+	public Post getWithTagAndAuthor(String id) {
+		return postDAO.getWithTagAndAuthor(id);
+  }
+  
 	public boolean add(Post post) {
 		post.setID(generateID());
 		post.setViewCount(0);
