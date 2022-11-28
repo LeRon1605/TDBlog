@@ -44,7 +44,7 @@
             <table class="table table-bordered caption-top">
                 <caption class="main-color position-relative">
                     <b>Danh sách bài viết</b>
-                    <a class="ms-3 text-decoration-none btn-add" href=""> 
+                    <a class="ms-3 text-decoration-none btn-add" href="/posts/insert"> 
                         Thêm bài viết
                     </a>
                     <div class="block-search d-flex">

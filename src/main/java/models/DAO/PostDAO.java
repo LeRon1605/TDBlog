@@ -19,5 +19,13 @@ public class PostDAO extends BaseDAO<Post>{
 		""";
 		return this.getRecordArray(query);
 	}
+	
+	public boolean add(Post post) {
+		String query = """
+				INSERT INTO POST(ID, NAME, CONTENT, VIEW, TIME, CREATEDAT, UPDATEDAT, AUTHORID, TAGID)
+				VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);
+		""";
+		return this.executeQuery(query, new Object[] { post.getID(), post.getName(), post.getContent(), post.getViewCount(), post.getTotalTime(), post.getCreatedAt(), post.getUpdatedAt(), post.getAuthorID(), post.getTagID() });
+	}
 
 }
