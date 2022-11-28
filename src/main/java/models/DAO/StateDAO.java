@@ -15,4 +15,14 @@ public class StateDAO extends BaseDAO<State>{
 		""";
 		return this.executeQuery(query, new Object[] { state.getId(), state.getStateRaw(), state.getAt(), state.getPostID() });
 	}
+	
+	public State getCurrentStateOfPost(String postID) {
+		String query = """
+			SELECT * FROM STATEHISTORY 
+			WHERE POSTID = ?
+			ORDER BY AT DESC
+			LIMIT 1
+		""";
+		return this.getRecordSingle(query, new Object[] { postID });
+	}
 }

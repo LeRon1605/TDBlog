@@ -38,11 +38,11 @@ public abstract class BaseDAO<T> {
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				return null;
+				return new ArrayList<T>();
 			}
 			return data;
 		} else {
-			return null;
+			return new ArrayList<T>();
 		}
 	}
 	
@@ -60,11 +60,11 @@ public abstract class BaseDAO<T> {
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				return null;
+				return new ArrayList<T>();
 			}
 			return data;
 		} else {
-			return null;
+			return new ArrayList<T>();
 		}
 	}
 	

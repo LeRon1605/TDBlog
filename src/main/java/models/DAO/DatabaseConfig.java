@@ -7,6 +7,6 @@ public class DatabaseConfig {
 	public static String password = "ronle75";
 	
 	public static String getConnectionString() {
-		return "jdbc:mysql://" + host + "/" + name + "?useSSL=false"; 
+		return "jdbc:mysql://" + host + "/" + name + "?useSSL=false&useUnicode=true&characterSetResults=utf8&characterEncodi‌​ng=UTF-8"; 
 	}
 }

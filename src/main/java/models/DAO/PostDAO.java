@@ -10,6 +10,22 @@ public class PostDAO extends BaseDAO<Post>{
 		super(new PostResultSetMapper());
 	}
 	
+	public ArrayList<Post> getByFilter(String keyword, String sortBy) {
+		String query = """
+				SELECT POST.*, USER.NAME AS 'AUTHOR', TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
+				ON POST.TAGID = TAG.ID
+				INNER JOIN USER
+				ON POST.AUTHORID = USER.ID	
+		""";
+		if (!keyword.isEmpty()) {
+			query += " WHERE POST.NAME LIKE '%" + keyword + "%'";
+		}
+		if (!sortBy.isEmpty()) {
+			query += " ORDER BY POST." + sortBy;
+		}
+		return this.getRecordArray(query);
+	}
+	
 	public ArrayList<Post> getAllWithPostAndAuthor() {
 		String query = """
 				SELECT POST.*, USER.NAME AS 'AUTHOR', TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG

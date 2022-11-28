@@ -16,7 +16,7 @@ public class StateResultSetMapper implements IResultSetMapper<State>{
 				return null;
 			State state = new State();
 			state.setId(row.getString("ID"));
-			int stateName = row.getInt("NAME");
+			int stateName = row.getInt("STATE");
 			state.setAt(row.getTimestamp("AT"));
 			state.setState((stateName == 0) ? PostState.Pending : (stateName == 1 ? PostState.Publish : PostState.Ban));
 			state.setPostID(row.getString("POSTID"));

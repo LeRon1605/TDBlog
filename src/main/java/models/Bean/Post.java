@@ -24,6 +24,7 @@ public class Post {
 	@NotNull(message = "Thể loại bài viết không được để trống")
 	private String tagID;
 	private String tag;
+	private String state;
 	
 	public String getID() {
 		return ID;
@@ -58,6 +59,9 @@ public class Post {
 	public String getTag() {
 		return tag;
 	}
+	public String getState() {
+		return state;
+	}
 	
 	public void setID(String iD) {
 		ID = iD;
@@ -91,5 +95,8 @@ public class Post {
 	}
 	public void setTag(String tag) {
 		this.tag = tag;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 }

@@ -47,24 +47,26 @@
                     <a class="ms-3 text-decoration-none btn-add" href="/posts/insert"> 
                         Thêm bài viết
                     </a>
-                    <div class="block-search d-flex">
+                    <form class="block-search d-flex" action="/admin" method="GET">
                         <div class="d-flex">
-                            <select id="select">
-                                <option>Sắp xếp</option>
-                                <option value="1">Tên bài viết</option>
-                                <option value="2">Lượt xem</option>
-                                <option value="3">Đã khóa</option>
+                        	<% String sortBy = (String)request.getParameter("sortBy"); %>
+                            <select id="select" name="sortBy">
+                                <option value="" <% if (sortBy == null || sortBy.isEmpty()) { out.print("selected"); }%>>Sắp xếp</option>
+                                <option value="name" <% if (sortBy != null && sortBy.equals("name")) { out.print("selected"); }%>>Tên bài viết</option>
+                                <option value="view" <% if (sortBy != null && sortBy.equals("view")) { out.print("selected"); }%>>Lượt xem</option>
                             </select>
-                            <select id="select" class="ms-3">
-                                <option>Trạng thái</option>
-                                <option value="1">Đang chờ duyệt</option>
-                                <option value="2">Đang phát hành</option>
-                                <option value="3">Đã khóa</option>
+                            <% String state = (String)request.getParameter("state"); %>
+                            <select id="select" class="ms-3" name="state">
+                                <option value="-1" <% if (state == null || state.isEmpty()) { out.print("selected"); }%>>Trạng thái</option>
+                                <option value="0" <% if (state != null && state.equals("0")) { out.print("selected"); }%>>Đang chờ duyệt</option>
+                                <option value="1" <% if (state != null && state.equals("1")) { out.print("selected"); } %>>Đang phát hành</option>
+                                <option value="2" <% if (state != null && state.equals("2")) { out.print("selected"); } %>>Đã cấm</option>
                             </select>
                         </div>
-                        <input placeholder="Nhập từ khóa tìm kiếm" class="ms-3 p-2"/>
+                        <% String keyword = request.getParameter("keyword") == null ? "" : (String)request.getParameter("keyword"); %>
+                        <input placeholder="Nhập từ khóa tìm kiếm" class="ms-3 p-2" value="<%= keyword %>" name="keyword"/>
                         <button class="ms-2 btn btn-primary">Tìm kiếm</button>
-                    </div>
+                    </form>
                 </caption>
                 <thead class="table-white">
                   <tr>
@@ -88,7 +90,7 @@
 		                    <td><%= posts.get(i).getID() %></td>
 		                    <td><%= posts.get(i).getName() %></td>
 		                    <td><%= posts.get(i).getTag() %></td>
-		                    <td>Đang chờ duyệt</td>
+		                    <td><%= posts.get(i).getState() %></td>
 		                    <td><%= posts.get(i).getAuthor() %></td>
 		                    <td><%= posts.get(i).getViewCount() %></td>
 		                    <td class="d-flex justify-content-between">

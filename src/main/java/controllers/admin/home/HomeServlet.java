@@ -23,7 +23,11 @@ public class HomeServlet extends BaseServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		
-		ArrayList<Post> posts = postBO.getAllWithPostAndAuthor();
+		String sortBy = request.getParameter("sortBy") != null ? (String)request.getParameter("sortBy") : "";
+		String keyword = request.getParameter("keyword") != null ? (String)request.getParameter("keyword") : "";
+		int state = request.getParameter("state") != null ? Integer.parseInt(request.getParameter("state")) : -1;
+		
+		ArrayList<Post> posts = postBO.getByFilter(keyword, state, sortBy);
 		
 		request.setAttribute("posts", posts);
 		request.getRequestDispatcher("/views/admin/home/index.jsp").forward(request, response);

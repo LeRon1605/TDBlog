@@ -18,8 +18,25 @@ public class PostBO extends BaseBO{
 		stateDAO = new StateDAO();
 	}
 	
+	public ArrayList<Post> getByFilter(String keyword, int state, String sortBy) {
+		ArrayList<Post> posts = new ArrayList<Post>();
+		for (Post post: postDAO.getByFilter(keyword, sortBy)) {
+			State s = stateDAO.getCurrentStateOfPost(post.getID());
+			if (state == -1 || s.getStateRaw() == state) {
+				post.setState(s.getStateStr());
+				posts.add(post);
+			}
+		}
+		return posts;
+	}
+	
 	public ArrayList<Post> getAllWithPostAndAuthor() {
-		return postDAO.getAllWithPostAndAuthor();
+		ArrayList<Post> posts = postDAO.getAllWithPostAndAuthor();
+		for (Post post: posts) {
+			State state = stateDAO.getCurrentStateOfPost(post.getID());
+			post.setState(state.getStateStr());
+		}
+		return posts;
 	}
 	
 	public boolean add(Post post) {
