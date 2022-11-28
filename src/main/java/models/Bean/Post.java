@@ -2,16 +2,26 @@ package models.Bean;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Post {
 	private String ID;
+	@NotNull(message = "Tên bài viết không được để trống")
+	@Size(min = 15, message = "Tên bài viết có độ dài tối thiểu 15 kí tự")
 	private String name;
+	@NotNull(message = "Nội dung của bài viết không được để trống")
+	@Size(min = 100, message = "Nội dung bài viết có độ dài tối thiểu 100 kí tự")
 	private String content;
 	private int viewCount;
 	private int totalTime;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
+	@NotNull(message = "Tác giả bài viết không được để trống")
 	private String authorID;
 	private String author;
+	@NotNull(message = "Thể loại bài viết không được để trống")
 	private String tagID;
 	private String tag;
 	

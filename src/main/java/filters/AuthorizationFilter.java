@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import core.Auth.AuthContext;
 
-@WebFilter(urlPatterns = {"/admin"})
+@WebFilter(urlPatterns = {"/admin", "/posts/insert"})
 public class AuthorizationFilter implements Filter{
 
 	@Override
@@ -25,11 +25,14 @@ public class AuthorizationFilter implements Filter{
 			((HttpServletResponse)response).sendRedirect("/auth/login");
 		else 
 			if (((HttpServletRequest)request).getServletPath().startsWith("/admin")){
-				if (!context.isInRole("Admin")) {
+				if (!context.isInRole("ADMIN")) {
 					request.getRequestDispatcher("/views/errors/unauthorized.jsp").forward(request, response);
+				}else {
+					chain.doFilter(request, response);
 				}
+			}else {
+				chain.doFilter(request, response);
 			}
-			
 	}
 
 	@Override

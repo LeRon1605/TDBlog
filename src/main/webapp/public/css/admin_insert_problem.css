@@ -1,0 +1,131 @@
+.main {
+    background: #f1f1f1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    width: 1000px;
+    min-height: 100px;
+    padding: 32px 24px;
+    text-align: center;
+    background: #fff;
+    border-radius: 2px;
+    margin: 24px;
+    align-self: center;
+    box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+}
+
+.form .heading {
+    font-size: 2.4rem;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 16px;
+    flex-direction: column;
+}
+
+.form-label,
+.form-message {
+    text-align: left;
+    margin-right: 20px;
+}
+
+.form-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+}
+
+.form-control {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+    width: 100%;
+}
+
+.form-control-text {
+    height: 80px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+
+.form-control:hover,
+.form-control-text:hover {
+    border-color: #2fe255;
+}
+
+.form-group.invalid .form-control {
+    border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+    color: #f33a58;
+}
+
+.form-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+}
+
+.form-radio {
+    display: flex;
+    align-items: center;
+}
+
+.form-radio p {
+    margin: 0 36px 0 8px;
+    font-size: 15px;
+}
+
+.form-btn {
+    display: flex;
+}
+
+.form-submit,
+.form-add-testcase {
+    outline: none;
+    background-color: #2fe255;
+    margin-top: 12px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    min-width: 160px;
+    font-size: 14px;
+    border-radius: 16px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.form-submit:hover {
+    background-color: #2fe255;
+}
+
+.form-data {
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+}
+
+.form-input,
+.form-limit {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.spacer {
+    margin-top: 36px;
+}

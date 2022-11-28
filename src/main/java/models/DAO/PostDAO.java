@@ -19,6 +19,7 @@ public class PostDAO extends BaseDAO<Post>{
 		""";
 		return this.getRecordArray(query);
 	}
+  
 	public Post getWithTagAndAuthor(String id) {
 		String query = """
 				SELECT POST.*, USER.NAME AS 'AUTHOR', TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
@@ -34,13 +35,23 @@ public class PostDAO extends BaseDAO<Post>{
 		String query = "SELECT * FROM POST WHERE ID = ?";
 		return this.getRecordSingle(query, new Object[] {id});
 	}
+  
 	public boolean updateView(String id, int view) {
 		String query = "UPDATE POST SET VIEWCOUNT = ? WHERE ID = ?";
 		return this.executeQuery(query, new Object[] {id, view});
 	}
+  
 	public boolean deletePost(String id) {
 		String query = "DELETE FROM POST WHERE ID = ?";
 		return this.executeQuery(query, new Object[] {id});
 	}
 	
+	public boolean add(Post post) {
+		String query = """
+				INSERT INTO POST(ID, NAME, CONTENT, VIEW, TIME, CREATEDAT, UPDATEDAT, AUTHORID, TAGID)
+				VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);
+		""";
+		return this.executeQuery(query, new Object[] { post.getID(), post.getName(), post.getContent(), post.getViewCount(), post.getTotalTime(), post.getCreatedAt(), post.getUpdatedAt(), post.getAuthorID(), post.getTagID() });
+	}
+
 }
