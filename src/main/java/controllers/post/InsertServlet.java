@@ -34,6 +34,7 @@ public class InsertServlet extends BaseServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
+		request.setCharacterEncoding("utf-8");
 		
 		String name = (String)request.getParameter("title");
 		String content = (String)request.getParameter("content");
