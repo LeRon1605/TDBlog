@@ -52,7 +52,7 @@ public class LoginServlet extends BaseServlet {
 					new Claim("Role", roleBO.getById(user.getRoleID()).getName())
 				});
 				if (result)
-					response.sendRedirect("/");
+					response.sendRedirect("/home");
 				else
 				{
 					request.setAttribute("error", "Đăng nhập không thành công");

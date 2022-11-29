@@ -85,4 +85,8 @@ public class PostBO extends BaseBO{
 		}
 		return false;
 	}
+	public boolean updatePost(Post post) {
+		
+		return false;
+	}
 }
