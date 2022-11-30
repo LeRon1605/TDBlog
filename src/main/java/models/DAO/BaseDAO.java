@@ -142,7 +142,7 @@ public abstract class BaseDAO<T> {
 		}
 	}
 	
-	private PreparedStatement getPrepareStatement(Connection connection, String sql, Object ...params) throws SQLException {
+	protected PreparedStatement getPrepareStatement(Connection connection, String sql, Object ...params) throws SQLException {
 		PreparedStatement statement = connection.prepareStatement(sql);
 		for (int i = 0;i < params.length;i++) {
 			if (params[i] instanceof Integer) {

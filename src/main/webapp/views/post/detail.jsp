@@ -4,19 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<% Post post = (Post)request.getAttribute("post"); %>
-	<meta charset="UTF-8">
-	<title><%= post.getName() %></title>
-	 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href ="../../public/css/action.css">
-	<link rel="stylesheet" href ="../../public/css/grid.css">
-	<link rel="stylesheet" href ="../../public/css/reset.css">
-	<link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-	<style>
-		p {
-			margin: 20px 0 !important;
-		}
-	</style>
+<meta charset="UTF-8">
+<title><%= post.getName() %></title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
+<link rel="stylesheet" href ="../../public/css/action.css">
+<link rel="stylesheet" href ="../../public/css/grid.css">
+<link rel="stylesheet" href ="../../public/css/reset.css">
+<link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<style>
+   p {
+	   margin: 20px 0 !important;
+   }
+</style>
 </head>
 <body>
 	<jsp:include page="../shared/header.jsp" flush="true" />

@@ -54,7 +54,7 @@ public class PostDAO extends BaseDAO<Post>{
   
 	public boolean updateView(String id, int view) {
 		String query = "UPDATE POST SET VIEW = ? WHERE ID = ?";
-		return this.executeQuery(query, new Object[] {id, view});
+		return this.executeQuery(query, new Object[] {view, id});
 	}
   
 	public boolean deletePost(String id) {

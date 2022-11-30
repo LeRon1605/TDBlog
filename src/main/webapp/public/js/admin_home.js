@@ -3,10 +3,10 @@ const chartPost = document.getElementById('chart-post');
 new Chart(chartReader, {
     type: 'line',
     data: {
-        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3'],
+        labels: data.labels,
         datasets: [{
-            label: 'My First chart',
-            data: [2, 4, 6],
+            label: 'Người dùng mới',
+            data: data.users,
             fill: false,
             borderColor: 'rgb(75, 192, 192)'
         }]
@@ -15,27 +15,32 @@ new Chart(chartReader, {
 new Chart(chartPost, {
     type: 'bar',
     data: {
-        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3'],
+        labels: data.labels,
         datasets: [
             {
                 label: 'Đang chờ duyệt',
-                data: [1, 2, 3],
+                data: data.states.processing,
                 backgroundColor: '#059BFF'
             },
             {
                 label: 'Đã xuất bản',
-                data: [1, 5, 2],
+                data: data.states.publish,
                 backgroundColor: '#22CFCF'
+            },
+            {
+                label: 'Đã cấm',
+                data: data.states.ban,
+                backgroundColor: '#FF4069'
             }
         ],
-        options: {
+    },
+    options: {
             responsive: true,
             scales: {
                 x: {
                     stacked: true,
                 }
             }
-        }
     }
 })
 $(document).ready(function() {
