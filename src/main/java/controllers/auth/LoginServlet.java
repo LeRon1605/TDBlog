@@ -26,7 +26,7 @@ public class LoginServlet extends BaseServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		if (this.authContext.isAuthenticated()) {
-			response.sendRedirect("/");
+			response.sendRedirect("/home");
 		}else {
 			request.getRequestDispatcher("/views/auth/login.jsp").forward(request, response);
 		}
@@ -35,7 +35,7 @@ public class LoginServlet extends BaseServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		if (this.authContext.isAuthenticated()) {
-			response.sendRedirect("/");
+			response.sendRedirect("/home");
 		}else {
 			String username = (String)request.getParameter("username");
 			String password = (String)request.getParameter("password");

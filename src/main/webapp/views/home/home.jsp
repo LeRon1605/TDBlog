@@ -41,7 +41,7 @@
                     <div class="row">
                     <%
 	                	ArrayList<Post> posts = (ArrayList<Post>)request.getAttribute("posts");
-	                	for (int i = 0;i < 4;i++) {
+	                	for (int i = 0;i < posts.size();i++) {
 	                %>	
                         <div class="col c-6">
                             <div class="container__header-part mb-10">
@@ -49,7 +49,7 @@
                                     <div class="container_header-item flex w-full">
                                         <div class="col c-5">
                                             <div class="container__header-item-img  ">
-                                                <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="w-full mr-5 rounded-md">
+                                                <img src="<%= posts.get(i).getImage() %>" alt="" class="w-full mr-5 rounded-md">
                                             </div>
                                         </div>
                                         <div class="col c-7">
@@ -93,7 +93,7 @@
                                     <div class="container__body-item flex w-full">
                                         <div class="col c-5">
                                             <div class="container__body-item-img  ">
-                                                <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="w-full mr-5 rounded-md">
+                                                <img src="<%= posts.get(i).getImage() %>" alt="" class="w-full mr-5 rounded-md">
                                             </div>
                                         </div>
                                         <div class="col c-7">

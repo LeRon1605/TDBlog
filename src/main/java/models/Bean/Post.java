@@ -16,6 +16,7 @@ public class Post {
 	private String content;
 	private int viewCount;
 	private int totalTime;
+	private String image;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	@NotNull(message = "Tác giả bài viết không được để trống")
@@ -62,6 +63,9 @@ public class Post {
 	public String getState() {
 		return state;
 	}
+	public String getImage() {
+		return image;
+	}
 	
 	public void setID(String iD) {
 		ID = iD;
@@ -98,5 +102,8 @@ public class Post {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

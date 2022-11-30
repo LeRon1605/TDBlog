@@ -72,7 +72,7 @@ public class PostBO extends BaseBO{
 	public boolean add(Post post) {
 		post.setID(generateID());
 		post.setViewCount(0);
-		post.setTotalTime(0);
+		post.setTotalTime(post.getContent().split(" ").length / 200);
 		post.setCreatedAt(Timestamp.from(Instant.now()));		
 		boolean result =  postDAO.add(post);
 		if (result) {

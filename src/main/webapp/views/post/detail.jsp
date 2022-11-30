@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<% Post post = (Post)request.getAttribute("post"); %>
 <title><%= post.getName() %></title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
 <link rel="stylesheet" href ="../../public/css/action.css">
@@ -45,11 +46,7 @@
 							<h1
 								class="container__content-title text-[42px] font-semibold leading-[64px] mb-2"><%= post.getName() %></h1>
 							<div class="container__content-owned ">
-								<a href="" class="inline-block flex items-center"> <img
-									src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt=""
-									class="container__content-owned-image w-16 h-16 rounded-full mr-4">
-									<p class="container__content-owned-name text-[18px]"><%= post.getAuthor() %></p>
-								</a>
+								<img src="<%= post.getImage() %>" alt="" class="container_action-owned-image w-16 h-16">
 							</div>
 						</div>
 						<div class="container__content-body">

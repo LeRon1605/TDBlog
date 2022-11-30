@@ -12,3 +12,11 @@
         filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
         filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
  });
+ 
+ // Image
+let inputImage = document.getElementById('inputImage');
+let image = document.getElementById('image');
+
+inputImage.onchange = (e) => {
+    image.src = URL.createObjectURL(e.target.files[0]);
+}
