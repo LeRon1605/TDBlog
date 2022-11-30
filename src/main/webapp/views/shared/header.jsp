@@ -5,6 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../../public/css/grid.css">
     <link rel="stylesheet" href="../../public/css/action.css">
     <link rel="stylesheet" href="../../public/css/reset.css">
@@ -18,9 +19,9 @@
                     <a href=""><img src="https://spiderum.com/assets/icons/wideLogo.png" alt=""
                             class="header_news-logo w-40 px-3 border-r border-solid"></a>
                     <div class="header__news-network flex justify-between">
-                        <a href="#!"><i class="fa-brands fa-facebook-f text-xl text-[#606266] px-3 mt-1"></i></a>
-                        <a href="#!"><i class="fa-brands fa-instagram text-xl text-[#606266] px-3 mt-1"></i></a>
-                        <a href="#!"><i class="fa-brands fa-linkedin-in text-xl text-[#606266] px-3 mt-1"></i></a>
+                        <a href="https://www.facebook.com/tn.9.3.02/" target="_blank"><i class="fa-brands fa-facebook-f text-xl text-[#606266] px-3 mt-1"></i></a>
+                        <a href="https://www.facebook.com/le.ron.399" target="_blank"><i class="fa-brands fa-instagram text-xl text-[#606266] px-3 mt-1"></i></a>
+                        <a href="https://www.facebook.com/duyquang.tran.50309" target="_blank"><i class="fa-brands fa-linkedin-in text-xl text-[#606266] px-3 mt-1"></i></a>
                     </div>
                 </div>
                 <div class="header__news-action flex items-center">
@@ -42,19 +43,17 @@
                         </div>
                     </div> -->
 
-                    <div class="header__news-non-action flex relative">
-                        <button
-                            class="px-6 border border-solid border-[#e3e3e3] rounded-3xl bg-[#fff] font-normal mx-5">
-                            <i class="fa-solid fa-pen-nib"></i>
+                    <div class="header__news-non-action flex relative ">
+                        <a href="/posts/insert" class="px-6 border border-solid border-[#e3e3e3] rounded-3xl bg-[#fff] font-normal mx-5 flex items-center">
+                            <i class="fa-solid fa-pen-nib mr-1"></i>
                             <span>Viết bài</span>
-                        </button>
+                        </a>
                         <div class="header__news-user">
                             <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="w-12 h-12 rounded-full cursor-pointer">
                             <div
                                 class="header__news-subUser absolute bg-[#fff] w-[300px] right-0 top-16 shadow-lg shadow-gray-600 rounded-sm hidden">
-                                <div class="header__news-subUser-heading flex m-3 items-center">
-                                    <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt=""
-                                        class="header__news-subUser-img h-12 w-12 mr-4 rounded-full">
+                                <div class="header__news-subUser-heading flex items-center p-3">
+                                    <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="header__news-subUser-img h-12 w-12 mr-4 rounded-full">
                                     <div class="header__news-subUser-info w-48">
                                         <a href="" class="header__news-subUser-name block ">Tấn Năng</a>
                                         <a href="" class="header__news-subUser-email block">tannang09032002@gmail</a>

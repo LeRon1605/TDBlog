@@ -8,13 +8,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../../public/css/grid.css">
     <link rel="stylesheet" href="../../public/css/action.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/reset.css">
 </head>
@@ -29,7 +27,8 @@
             <h2 class="container__bg-detail text-[30px] max-w-2xl font-medium mb-4 text-[#161616]">
             	Viết - Chia sẻ - Kết nối - Chiêm nghiệm - Tất cả tại Spiderum
            	</h2>
-            <input type="button" value="Đăng bài viết" class="px-6 py-2 border border-solid border-[#333] rounded-3xl bg-[#fff] font-normal hover:cursor-pointer">
+           	<a href="/posts/insert" class="px-6 py-2 border border-solid border-[#333] rounded-3xl bg-[#fff] font-normal hover:cursor-pointer">Đăng bài viết</a>
+          
         </div>
     </div>
 
@@ -42,7 +41,7 @@
                     <div class="row">
                     <%
 	                	ArrayList<Post> posts = (ArrayList<Post>)request.getAttribute("posts");
-	                	for (int i = 0;i < posts.size();i++) {
+	                	for (int i = 0;i < 4;i++) {
 	                %>	
                         <div class="col c-6">
                             <div class="container__header-part mb-10">
@@ -58,7 +57,7 @@
                                                 <a href="" class="container__header-item-heading inline-block text-xs"><%= posts.get(i).getTag() %></a>
                                                 <a href="/posts?id=<%= posts.get(i).getID() %>" class="container__header-item-title inline-block text-base font-medium my-1"><%= posts.get(i).getName() %></a>
                                                 <span class="container__header-item-desc text-xs max-h-5"><%= posts.get(i).getContent() %></span>
-                                                <div class="container__header-item-bottom flex justify-between items-end">
+                                                <div class="container__header-item-bottom flex justify-between items-end mt-2">
                                                     <div class="container__header-item-owner flex items-end">
                                                         <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="item__owner-img w-10 h-10 rounded-full mr-4 ">
                                                         <a href="" class="item__owner-name text-[16px]"><%= posts.get(i).getAuthor() %></a>
@@ -100,9 +99,9 @@
                                         <div class="col c-7">
                                             <div class="container__body-item-content w-full justify-between ">
                                                 <a href="" class="container__body-item-heading inline-block text-xs"><%= posts.get(i).getTag() %></a>
-                                                <a href="" class="container__body-item-title inline-block text-base font-medium my-1"><%= posts.get(i).getName() %></a>
+                                                <a href="/posts?id=<%= posts.get(i).getID() %>" class="container__body-item-title inline-block text-base font-medium my-1"><%= posts.get(i).getName() %></a>
                                                 <span class="container__body-item-desc text-xs max-h-5"><%= posts.get(i).getContent() %></span>
-                                                <div class="container__body-item-bottom flex justify-between items-end">
+                                                <div class="container__body-item-bottom flex justify-between items-end mt-2">
                                                     <div class="container__body-item-owner flex items-end">
                                                         <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="item__owner-img w-10 h-10 rounded-full mr-4 ">
                                                         <a href="" class="item__owner-name text-[16px]"><%= posts.get(i).getAuthor() %></a>

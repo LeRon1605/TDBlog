@@ -4,17 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<% Post post = (Post)request.getAttribute("post"); %>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title><%= post.getName() %></title>
+	 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href ="../../public/css/action.css">
 	<link rel="stylesheet" href ="../../public/css/grid.css">
 	<link rel="stylesheet" href ="../../public/css/reset.css">
 	<link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<style>
+		p {
+			margin: 20px 0 !important;
+		}
+	</style>
 </head>
 <body>
 	<jsp:include page="../shared/header.jsp" flush="true" />
-	<% Post post = (Post)request.getAttribute("post"); %>
-	
 	<div class="pt-28">
 	<div class="container grid wide ">
 		<div class="">
@@ -23,13 +28,12 @@
 					<div class="container_action fixed mx-[60px] mb-[60px] flex flex-col justify-center h-screen">
 						<div
 							class="container_action-item flex justify-center flex-col items-center">
-							<i class="fa-solid fa-caret-up text-[30px] mt-[20px]"></i>
+							<i class="fa-solid fa-caret-up text-[30px] mb-[20px]"></i>
 							<div class="container_action-owned ">
 								<a href="" class="inline-block"> 
-									<img src="./assets/img/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="container_action-owned-image w-16 h-16 rounded-full">
+									<img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="container_action-owned-image w-16 h-16 rounded-full">
 								</a>
 							</div>
-							
 							<i class="fa-solid fa-caret-down text-[30px] mt-[20px]"></i>
 						</div>
 					</div>
@@ -43,7 +47,7 @@
 								class="container__content-title text-[42px] font-semibold leading-[64px] mb-2"><%= post.getName() %></h1>
 							<div class="container__content-owned ">
 								<a href="" class="inline-block flex items-center"> <img
-									src="./assets/img/banner_ipad.39cef009ae5fb6ad90c9.png" alt=""
+									src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt=""
 									class="container__content-owned-image w-16 h-16 rounded-full mr-4">
 									<p class="container__content-owned-name text-[18px]"><%= post.getAuthor() %></p>
 								</a>

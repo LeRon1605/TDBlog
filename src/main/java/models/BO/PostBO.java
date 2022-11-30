@@ -67,7 +67,7 @@ public class PostBO extends BaseBO{
   
 	public Post getWithTagAndAuthor(String id) {
 		return postDAO.getWithTagAndAuthor(id);
-  }
+	}
   
 	public boolean add(Post post) {
 		post.setID(generateID());
@@ -86,7 +86,12 @@ public class PostBO extends BaseBO{
 		return false;
 	}
 	public boolean updatePost(Post post) {
-		
+		if(post == null) {
+			return false;
+		}
+		if(postDAO.getById(post.getID()) != null) {
+			postDAO.updatePost(post);
+		}
 		return false;
 	}
 }

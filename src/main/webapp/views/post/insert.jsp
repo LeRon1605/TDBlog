@@ -32,7 +32,7 @@
 			<% } %>
             <div class="form-group">
                 <label for="title" class="form-label">Tiêu đề bài viết</label>
-                <input id="title" name="title" type="text" placeholder="Nhập tên bài tập" class="form-control">
+                <input id="title" name="title" type="text" placeholder="Nhập tên bài tập" class="form-control" value="">
                 <span class="form-message"></span>
             </div>
 
@@ -50,7 +50,7 @@
 
             <div class="form-group">
                 <label for="content" class="form-label">Nội dung bài viết</label>
-                <textarea name="content" id="editor1" cols="" rows="3" class="form-control-text"></textarea>
+                <textarea value="" name="content" id="editor1" cols="" rows="3" class="form-control-text"></textarea>
                 <span class="form-message"></span>
             </div>
             <% if (request.getAttribute("validation-error") != null) { %>
