@@ -10,3 +10,25 @@
   width: 200px;
   z-index: 15;
 }
+
+.container__header-item-desc ,
+.container__body-item-desc{
+  font-weight: 400;
+  color: #666;
+  line-height: 1.8rem;
+  height: 1.6rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.container__header-item-title,
+.container__body-item-title{
+  line-height: 2rem;
+  height: 3.4rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
