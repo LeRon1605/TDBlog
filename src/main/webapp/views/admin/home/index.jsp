@@ -1,3 +1,7 @@
+<%@page import="models.Bean.StateStatistic"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="models.Bean.Statistic"%>
 <%@page import="models.Bean.Post"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -94,7 +98,7 @@
 		                    <td><%= posts.get(i).getAuthor() %></td>
 		                    <td><%= posts.get(i).getViewCount() %></td>
 		                    <td class="d-flex justify-content-between">
-		                        <a href="" class="text-decoration-none main-color">Xem</a>
+		                        <a href="/posts?id=<%= posts.get(i).getID() %>" class="text-decoration-none main-color">Xem</a>
 		                        <a href="" class="text-decoration-none main-color">Sửa</a>
 		                        <a href="" class="text-decoration-none main-color">Xóa</a>
 		                    </td>
@@ -116,6 +120,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="../../../public/js/admin_home.js"></script>
+	<script>
+		<% 
+			ArrayList<Statistic> userStatistic = (ArrayList<Statistic>)request.getAttribute("userStatistic"); 
+			ArrayList<StateStatistic> stateStatistic = (ArrayList<StateStatistic>)request.getAttribute("stateStatistic"); 
+			String labels[] = new String[userStatistic.size()];
+			String userStatisticData[] = new String[userStatistic.size()];
+			String processingData[] = new String[stateStatistic.size() / 3];
+			String publishData[] = new String[stateStatistic.size() / 3];
+			String banData[] = new String[stateStatistic.size() / 3];
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
+			for (int i = 0;i < userStatistic.size();i++) {
+				labels[i] = "'" + formatter.format(userStatistic.get(i).getDate()) + "'";
+				userStatisticData[i] = Integer.toString(userStatistic.get(i).getCount());
+			}
+			for (int i = 0;i < stateStatistic.size();i++) {
+				if (i % 3 == 0) {
+					processingData[i / 3] = Integer.toString(stateStatistic.get(i).getCount());	
+				}else if (i % 3 == 1) {
+					publishData[i / 3] = Integer.toString(stateStatistic.get(i).getCount());	
+				}else{
+					banData[i / 3] = Integer.toString(stateStatistic.get(i).getCount());	
+				}
+			}
+		%>
+		const data = {
+				labels: [<%= String.join(",", labels) %>],
+				users: [<%= String.join(",", userStatisticData) %>],
+				states: {
+					processing: [<%= String.join(",", processingData) %>],
+					publish: [<%= String.join(",", publishData) %>],
+					ban: [<%= String.join(",", banData) %>]
+				}
+		}
+	</script>
+	<script src="../../public/js/admin_home.js"></script>
 </body>
 </html>

@@ -6,8 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href ="../../public/css/action.css">
 <link rel="stylesheet" href ="../../public/css/grid.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap"
+        rel="stylesheet">
 </head>
 <body>
 	<div id="header" class="shadow-xl fixed w-screen bg-[#fff] z-20">
@@ -110,7 +116,7 @@
 							class="container_action-item flex justify-center flex-col items-center">
 							<div class="container_action-owned ">
 								<a href="" class="inline-block"> <img
-									src="./assets/img/banner_ipad.39cef009ae5fb6ad90c9.png" alt=""
+									src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/298467402_1682444885468096_2322540793488187084_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=qi8TvLyLlpwAX_YJE35&_nc_ht=scontent.fdad3-5.fna&oh=00_AfCIMmuAFWoV0tjLJTWv_ACFF0aiXmt8krtPs6V336yzCw&oe=638996FC" alt=""
 									class="container_action-owned-image w-16 h-16 rounded-full">
 								</a>
 							</div>
@@ -130,7 +136,7 @@
 								class="container__content-title text-[42px] font-semibold leading-[64px] mb-2"><%= post.getName() %></h1>
 							<div class="container__content-owned ">
 								<a href="" class="inline-block flex items-center"> <img
-									src="./assets/img/banner_ipad.39cef009ae5fb6ad90c9.png" alt=""
+									src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/298467402_1682444885468096_2322540793488187084_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=qi8TvLyLlpwAX_YJE35&_nc_ht=scontent.fdad3-5.fna&oh=00_AfCIMmuAFWoV0tjLJTWv_ACFF0aiXmt8krtPs6V336yzCw&oe=638996FC" alt=""
 									class="container__content-owned-image w-16 h-16 rounded-full mr-4">
 									<p class="container__content-owned-name text-[18px]"><%= post.getAuthor() %></p>
 								</a>
