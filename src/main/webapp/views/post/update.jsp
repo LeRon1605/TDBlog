@@ -1,7 +1,7 @@
 <%@page import="models.Bean.Tag"%>
+<%@page import="models.Bean.Post"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +16,10 @@
 </head>
 
 <body>
+	<% Post post = (Post)request.getAttribute("posts");  %>
     <div class="main">
-        <form action="/posts/insert" method="POST" class="form" id="form_add-problem">
-            <h1 class="heading">Thêm bài viết</h1>
+        <form action="/posts/update" method="POST" class="form" id="form_add-problem">
+            <h1 class="heading">Cập nhật bài viết</h1>
             <div class="spacer"></div>
             <% if (request.getAttribute("error") != null) { %>
 	        	<div class="alert alert-danger text-center" role="alert">
@@ -30,9 +31,15 @@
 			  		Thêm bài viết thành công
 				</div>
 			<% } %>
+			 <div class="form-group">
+                <label for="id" class="form-label">ID bài viết</label>
+                <input id="id" name="id" type="text" class="form-control" value="<%= post.getID()%>" readonly>
+                <span class="form-message"></span>
+            </div>
+            
             <div class="form-group">
                 <label for="title" class="form-label">Tiêu đề bài viết</label>
-                <input id="title" name="title" type="text" placeholder="Nhập tên bài tập" class="form-control">
+                <input id="title" name="title" type="text" placeholder="Nhập tên bài tập" class="form-control" value="<%= post.getName()%>">
                 <span class="form-message"></span>
             </div>
 
@@ -42,7 +49,7 @@
                 	<% ArrayList<Tag> tags = (ArrayList<Tag>)request.getAttribute("tags"); %>
                     <option value="">Chọn thể loại</option>
                     <% for (Tag tag: tags) { %>
-                    	<option value="<%=tag.getID()%>"><%= tag.getName() %></option>
+                    	<option value="<%=tag.getID()%>" <%= post.getTagID().equals(tag.getID()) ? "selected" : ""%> > <%= tag.getName() %></option>
                     <% } %>
                 </select>
                 <span class="form-message"></span>
@@ -50,7 +57,7 @@
 
             <div class="form-group">
                 <label for="content" class="form-label">Nội dung bài viết</label>
-                <textarea name="content" id="editor1" cols="" rows="3" class="form-control-text"></textarea>
+                <textarea name="content" id="editor1" cols="" rows="3" class="form-control-text"><%= post.getContent() %></textarea>
                 <span class="form-message"></span>
             </div>
             <% if (request.getAttribute("validation-error") != null) { %>
@@ -65,7 +72,7 @@
 			<% } %>
 
             <div class="form-btn">
-                <button class="form-submit">Thêm bài viết</button>
+                <button class="form-submit">Cập nhật bài viết</button>
             </div>
         </form>
     </div>
@@ -73,4 +80,7 @@
 <script src="../../public/lib/ckeditor/ckeditor.js"></script>
 <script src="../../public/js/validation.js"></script>
 <script src="../../public/js/post_insert.js"></script>
+<script>
+	
+</script>
 </html>

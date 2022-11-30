@@ -90,7 +90,9 @@ public class PostBO extends BaseBO{
 			return false;
 		}
 		if(postDAO.getById(post.getID()) != null) {
+			post.setUpdatedAt(Timestamp.from(Instant.now()));
 			postDAO.updatePost(post);
+			return true;
 		}
 		return false;
 	}

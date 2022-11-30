@@ -95,7 +95,7 @@
 		                    <td><%= posts.get(i).getViewCount() %></td>
 		                    <td class="d-flex justify-content-between">
 		                        <a href="" class="text-decoration-none main-color">Xem</a>
-		                        <a href="" class="text-decoration-none main-color">Sửa</a>
+		                        <a href="/posts/update?id=<%= posts.get(i).getID() %>" class="text-decoration-none main-color">Sửa</a>
 		                        <a href="" class="text-decoration-none main-color">Xóa</a>
 		                    </td>
 		                  </tr>

@@ -20,7 +20,7 @@
 <body>
 	<jsp:include page="../shared/header.jsp" flush="true" />
     <!-- Body -->
-    <div class="container__background h-[600px] w-[100vw] bg-cover bg-right-top"
+    <div class="container__background h-[600px] w-full-base bg-cover bg-right-top"
         style="background-image: url('https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png')">
         <div class="container__bg-sup absolute left-[250px] top-36 font-bold">
             <h1 class="container__bg-heading text-[56px] mb-4 max-w-2xl">Góc nhìn đa chiều của thế hệ trẻ Việt Nam</h1>

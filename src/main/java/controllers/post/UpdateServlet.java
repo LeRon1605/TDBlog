@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controllers.BaseServlet;
+import core.Auth.AuthContext;
 import core.Validator.ValidateResult;
 import core.Validator.Validator;
 import models.BO.PostBO;
@@ -16,8 +18,8 @@ import models.BO.TagBO;
 import models.Bean.Post;
 import models.Bean.Tag;
 
-@WebServlet("/posts/insert")
-public class UpdateServlet extends HttpServlet {
+@WebServlet("/posts/update")
+public class UpdateServlet extends BaseServlet {
 	private TagBO tagBO;
 	private PostBO postBO;
 	public UpdateServlet() {
@@ -29,9 +31,11 @@ public class UpdateServlet extends HttpServlet {
 		ArrayList<Tag> tags = tagBO.getAll();
 		String id = request.getParameter("id");
 		Post post = postBO.getById(id);
+		
 		if(post != null) {
+			request.setAttribute("posts", post);
 			request.setAttribute("tags", tags);
-			request.getRequestDispatcher("/views/post/insert.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/post/update.jsp").forward(request, response);
 		}
 		else {
 			response.sendRedirect("/admin/home/index.jsp");
@@ -45,9 +49,13 @@ public class UpdateServlet extends HttpServlet {
 		String name = (String)request.getParameter("title");
 		String content = (String)request.getParameter("content");
 		String tagID = (String)request.getParameter("tag");
+		
 		String id = request.getParameter("id");
 		Post post = postBO.getById(id);
-		
+		System.out.println(id);
+		System.out.println(name);
+		System.out.println(content);
+		System.out.println(tagID);
 		if(post == null) {
 			response.sendRedirect("/page-not-found");
 		}
@@ -71,5 +79,4 @@ public class UpdateServlet extends HttpServlet {
 		}
 		doGet(request, response);
 	}
-
 }
