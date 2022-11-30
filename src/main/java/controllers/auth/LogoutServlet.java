@@ -15,7 +15,7 @@ public class LogoutServlet extends BaseServlet {
 		super.doGet(request, response);
 		if (this.authContext.isAuthenticated()) {
 			this.authContext.signOut();
-			response.sendRedirect("/");
+			response.sendRedirect("/home");
 		}
 	}
 	

@@ -19,7 +19,7 @@ import models.Bean.Post;
 import models.Bean.Tag;
 
 @WebServlet("/posts/update")
-public class UpdateServlet extends BaseServlet {
+public class UpdateServlet extends HttpServlet {
 	private TagBO tagBO;
 	private PostBO postBO;
 	public UpdateServlet() {

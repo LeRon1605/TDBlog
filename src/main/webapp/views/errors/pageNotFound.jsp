@@ -60,7 +60,7 @@
     <p class="heading__description">
         Trang bạn đang tìm kiếm đã có thể bị xóa hoặc đang được bảo trì.
     </p>
-    <a class="heading__direction" href="/">
+    <a class="heading__direction" href="/home">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Quay về trang chủ</span>
     </a>

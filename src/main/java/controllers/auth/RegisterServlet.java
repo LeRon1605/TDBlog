@@ -24,7 +24,7 @@ public class RegisterServlet extends BaseServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doGet(req, resp);
 		if (this.authContext.isAuthenticated()) {
-			resp.sendRedirect("/home/index");
+			resp.sendRedirect("/home");
 		}else {
 			req.getRequestDispatcher("/views/auth/register.jsp").forward(req, resp);
 		}
@@ -34,7 +34,7 @@ public class RegisterServlet extends BaseServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doGet(req, resp);
 		if (this.authContext.isAuthenticated()) {
-			resp.sendRedirect("/home/index");
+			resp.sendRedirect("/home");
 		}else {
 			User user = new User();
 			user.setName((String)req.getParameter("name"));

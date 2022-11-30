@@ -60,7 +60,7 @@
     <p class="heading__description">
         Bạn không có quyền để truy cập tài nguyên này. 
     </p>
-    <a class="heading__direction" href="/">
+    <a class="heading__direction" href="/home">
         <span>Quay về trang chủ</span>
     </a>
 </body>

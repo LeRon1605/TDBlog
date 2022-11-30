@@ -15,6 +15,7 @@ public class PostResultSetMapper implements IResultSetMapper<Post>{
 				return null;
 			post.setID(row.getString("ID"));
 			post.setName(row.getString("NAME"));
+			post.setImage(row.getString("IMAGE"));
 			post.setContent(row.getString("CONTENT"));
 			post.setViewCount(row.getInt("VIEW"));
 			post.setCreatedAt(row.getTimestamp("CREATEDAT"));

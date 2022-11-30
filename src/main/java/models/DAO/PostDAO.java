@@ -64,10 +64,10 @@ public class PostDAO extends BaseDAO<Post>{
 	
 	public boolean add(Post post) {
 		String query = """
-				INSERT INTO POST(ID, NAME, CONTENT, VIEW, TIME, CREATEDAT, UPDATEDAT, AUTHORID, TAGID)
-				VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);
+				INSERT INTO POST(ID, NAME, CONTENT, IMAGE, VIEW, TIME, CREATEDAT, UPDATEDAT, AUTHORID, TAGID)
+				VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 		""";
-		return this.executeQuery(query, new Object[] { post.getID(), post.getName(), post.getContent(), post.getViewCount(), post.getTotalTime(), post.getCreatedAt(), post.getUpdatedAt(), post.getAuthorID(), post.getTagID() });
+		return this.executeQuery(query, new Object[] { post.getID(), post.getName(), post.getContent(), post.getImage(), post.getViewCount(), post.getTotalTime(), post.getCreatedAt(), post.getUpdatedAt(), post.getAuthorID(), post.getTagID() });
 	}
 	public boolean updatePost(Post post) {
 		String query = """	
