@@ -69,5 +69,11 @@ public class PostDAO extends BaseDAO<Post>{
 		""";
 		return this.executeQuery(query, new Object[] { post.getID(), post.getName(), post.getContent(), post.getViewCount(), post.getTotalTime(), post.getCreatedAt(), post.getUpdatedAt(), post.getAuthorID(), post.getTagID() });
 	}
-
+	public boolean updatePost(Post post) {
+		String query = """	
+				UPDATE POST SET NAME = ?, CONTENT = ?, TIME = ?, UPDATEDAT = ?, TAGID = ?
+				WHERE ID = ?;
+		""";
+		return this.executeQuery(query, new Object[] { post.getName(), post.getContent(), post.getTotalTime(), post.getUpdatedAt(), post.getTagID(), post.getID() });
+	}
 }
