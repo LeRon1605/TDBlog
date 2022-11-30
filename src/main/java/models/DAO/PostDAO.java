@@ -71,9 +71,9 @@ public class PostDAO extends BaseDAO<Post>{
 	}
 	public boolean updatePost(Post post) {
 		String query = """	
-				UPDATE POST SET NAME = ?, CONTENT = ?, UPDATEDAT = ?, TAGID = ?
+				UPDATE POST SET NAME = ?, IMAGE = ?, CONTENT = ?, UPDATEDAT = ?, TAGID = ?
 				WHERE ID = ?;
 		""";
-		return this.executeQuery(query, new Object[] { post.getName(), post.getContent(), post.getUpdatedAt(), post.getTagID(), post.getID() });
+		return this.executeQuery(query, new Object[] { post.getName(), post.getImage(), post.getContent(), post.getUpdatedAt(), post.getTagID(), post.getID() });
 	}
 }

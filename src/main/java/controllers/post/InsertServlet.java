@@ -62,7 +62,7 @@ public class InsertServlet extends BaseServlet {
 			Part inputFile = request.getPart("image");
 		    String path = request.getServletContext().getRealPath("public/uploads") + "\\" + Paths.get(inputFile.getSubmittedFileName()).getFileName().toString();
 		    inputFile.write(path);
-		    post.setImage("public/uploads/" + Paths.get(inputFile.getSubmittedFileName()).getFileName().toString());
+		    post.setImage("/public/uploads/" + Paths.get(inputFile.getSubmittedFileName()).getFileName().toString());
 			boolean result = postBO.add(post);
 			if (result) {
 				request.setAttribute("success", true);

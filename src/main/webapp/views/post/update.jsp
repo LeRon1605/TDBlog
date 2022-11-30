@@ -13,12 +13,24 @@
     <link rel="stylesheet" href="../../public/css/grid.css">
     <link rel="stylesheet" href="../../public/css/admin_insert_problem.css">
     <title>Thêm bài tập</title>
+    <style>
+    	input[type="file"] {
+		    display: none !important;
+		}
+		
+		.custom-file-upload {
+		    border: 1px solid #ccc;
+		    display: inline-block;
+		    padding: 6px 12px;
+		    cursor: pointer;
+		}
+    </style>
 </head>
 
 <body>
-	<% Post post = (Post)request.getAttribute("posts");  %>
+	<% Post post = (Post)request.getAttribute("post");  %>
     <div class="main">
-        <form action="/posts/update" method="POST" class="form" id="form_add-problem">
+        <form action="/posts/update" method="POST" class="form" id="form_add-problem" enctype="multipart/form-data">
             <h1 class="heading">Cập nhật bài viết</h1>
             <div class="spacer"></div>
             <% if (request.getAttribute("error") != null) { %>
@@ -41,6 +53,16 @@
                 <label for="title" class="form-label">Tiêu đề bài viết</label>
                 <input id="title" name="title" type="text" placeholder="Nhập tên bài tập" class="form-control" value="<%= post.getName()%>">
                 <span class="form-message"></span>
+            </div>
+            
+            <div class="form-group">
+                	<img src="<%= post.getImage() %>"
+                         alt="" class="img-fluid rounded img-thumbnail" id="image">
+                    <label class="custom-file-upload mt-3">
+                    	<input id="inputImage" type="file" name="image" value = "<%= post.getImage() %>"/>
+                    	Chọn hình ảnh
+                    </label>
+                    <span class="form-message"></span>
             </div>
 
             <div class="form-group">
