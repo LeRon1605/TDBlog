@@ -42,7 +42,7 @@ public class HomeServlet extends BaseServlet {
 		
 		ArrayList<Statistic> userStatistic = statisticBO.getNewUserInRange(calendar.getTime(), now);
 		ArrayList<StateStatistic> stateStatistic = statisticBO.getStateInRange(calendar.getTime(), now);
-		ArrayList<Post> posts = postBO.getByFilter(keyword, state, sortBy);
+		ArrayList<Post> posts = postBO.getByFilter(keyword, null, state, sortBy);
 		
 		request.setAttribute("stateStatistic", stateStatistic);
 		request.setAttribute("userStatistic", userStatistic);

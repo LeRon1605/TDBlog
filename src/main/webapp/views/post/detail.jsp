@@ -7,14 +7,19 @@
 <meta charset="UTF-8">
 <% Post post = (Post)request.getAttribute("post"); %>
 <title><%= post.getName() %></title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href ="../../public/css/action.css">
 <link rel="stylesheet" href ="../../public/css/grid.css">
 <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <style>
    p {
-	   margin: 20px 0 !important;
-   }
+        margin: 0 0 32px !important;
+	    font-size: 20px;
+	    line-height: 35px;
+	    font-weight: 400;
+	    color: rgba(0,0,0,.8);
+	    font-family: 'Noto Serif', serif;
+    }
 </style>
 </head>
 <body>

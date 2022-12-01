@@ -39,7 +39,10 @@ new Chart(chartPost, {
             scales: {
                 x: {
                     stacked: true,
-                }
+                },
+                y: {
+					stacked: true
+				}
             }
     }
 })

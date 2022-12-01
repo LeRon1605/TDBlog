@@ -58,7 +58,7 @@
                                 <div class="header__news-subUser-container border-y border-solid border-gray-300 my-2">
                                     <div class="header__news-subUser-item p-3 hover:bg-gray-300 mx-2 mt-2">
                                         <i class="fa-solid fa-pen-to-square text-[#161616] w-5"></i>
-                                        <a href="" class="header__news-subUser-text text-[#161616]">Bài viết của tôi</a>
+                                        <a href="/me/posts" class="header__news-subUser-text text-[#161616]">Bài viết của tôi</a>
                                     </div>
                                     <div class="header__news-subUser-item p-3 hover:bg-gray-300 mx-2">
                                         <i class="fa-regular fa-bookmark text-[#161616] w-5"></i>

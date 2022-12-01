@@ -35,8 +35,8 @@
     <div class="container__content">
             <div class="grid wide">
                 <div class="container__header">
-                    <div class="container__header-tilte my-5">
-                        <span class="container__header-tilte-text text-xl">PHỔ BIẾN TRÊN SPIDERUM</span>
+                    <div class="container__header-tilte my-10">
+                        <span class="container__header-tilte-text text-xl border-b-[3px] border-[#3398d4] py-2">BÀI VIẾT MỚI</span>
                     </div>
                     <div class="row">
                     <%

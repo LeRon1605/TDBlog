@@ -10,17 +10,24 @@ public class PostDAO extends BaseDAO<Post>{
 		super(new PostResultSetMapper());
 	}
 	
-	public ArrayList<Post> getByFilter(String keyword, String sortBy) {
+	public ArrayList<Post> getByFilter(String keyword, String authorId, String sortBy) {
 		String query = """
 				SELECT POST.*, USER.NAME AS 'AUTHOR', TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
 				ON POST.TAGID = TAG.ID
 				INNER JOIN USER
 				ON POST.AUTHORID = USER.ID	
 		""";
-		if (!keyword.isEmpty()) {
+		if (keyword != null && !keyword.isEmpty()) {
 			query += " WHERE POST.NAME LIKE '%" + keyword + "%'";
 		}
-		if (!sortBy.isEmpty()) {
+		if (authorId != null && !authorId.isEmpty()) {
+			if (keyword != null && !keyword.isEmpty()) {
+				query += " AND POST.AUTHORID = '" + authorId + "'";
+			}else {
+				query += " WHERE POST.AUTHORID = '" + authorId + "'";
+			}
+		}
+		if (sortBy != null && !sortBy.isEmpty()) {
 			query += " ORDER BY POST." + sortBy;
 		}
 		return this.getRecordArray(query);
@@ -75,5 +82,15 @@ public class PostDAO extends BaseDAO<Post>{
 				WHERE ID = ?;
 		""";
 		return this.executeQuery(query, new Object[] { post.getName(), post.getImage(), post.getContent(), post.getUpdatedAt(), post.getTagID(), post.getID() });
+	}
+	public ArrayList<Post> getByAuthor(String authorId) {
+		String query = """
+				SELECT POST.*, USER.NAME AS 'AUTHOR', TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
+				ON POST.TAGID = TAG.ID
+				INNER JOIN USER
+				ON POST.AUTHORID = USER.ID
+				WHERE AUTHORID = ?
+		""";
+		return this.getRecordArray(query, new Object[] { authorId });
 	}
 }

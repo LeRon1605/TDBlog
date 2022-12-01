@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import core.Auth.AuthContext;
 
-@WebFilter(urlPatterns = {"/admin", "/posts/insert", "/posts/update", "/posts/delete"})
+@WebFilter(urlPatterns = {"/admin", "/posts/insert", "/posts/update", "/posts/delete, /me/posts"})
 public class AuthorizationFilter implements Filter{
 
 	@Override
