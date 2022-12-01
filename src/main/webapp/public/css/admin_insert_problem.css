@@ -36,8 +36,8 @@
 .form-label {
     font-weight: 700;
     padding-bottom: 6px;
-    line-height: 1.8rem;
-    font-size: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .form-control {
@@ -46,7 +46,6 @@
     border: 1px solid #b3b3b3;
     border-radius: 3px;
     outline: none;
-    font-size: 1.4rem;
     width: 100%;
 }
 
@@ -74,19 +73,10 @@
 }
 
 .form-message {
-    font-size: 1.2rem;
-    line-height: 1.6rem;
+    font-size: 1.0rem;
+    line-height: 1.2rem;
     padding: 4px 0 0;
-}
-
-.form-radio {
-    display: flex;
-    align-items: center;
-}
-
-.form-radio p {
-    margin: 0 36px 0 8px;
-    font-size: 15px;
+    margin: 0;
 }
 
 .form-btn {

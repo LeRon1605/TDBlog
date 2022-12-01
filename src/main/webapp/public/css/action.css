@@ -26,7 +26,6 @@
 .container__header-item-title,
 .container__body-item-title{
   line-height: 2rem;
-  height: 3.4rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
