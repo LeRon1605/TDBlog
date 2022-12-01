@@ -1,3 +1,4 @@
+<%@page import="core.Auth.AuthContext"%>
 <%@page import="models.Bean.Tag"%>
 <%@page import="models.Bean.Post"%>
 <%@page import="java.util.ArrayList"%>
@@ -33,14 +34,19 @@
         <form action="/posts/update" method="POST" class="form" id="form_add-problem" enctype="multipart/form-data">
             <h1 class="heading">Cập nhật bài viết</h1>
             <div class="spacer"></div>
-            <% if (request.getAttribute("error") != null) { %>
+            <% if (request.getParameter("error") != null) { %>
 	        	<div class="alert alert-danger text-center" role="alert">
-			  		<%= request.getAttribute("error") %>
+			  		<%= request.getParameter("error") %>
 				</div>
 			<% } %>
 			<% if (request.getAttribute("success") != null) { %>
 	        	<div class="alert alert-success text-center" role="alert">
-			  		Thêm bài viết thành công
+			  		<%= request.getAttribute("success") %>
+				</div>
+			<% } %>
+			<% if (request.getParameter("success") != null) { %>
+	        	<div class="alert alert-success text-center" role="alert">
+			  		<%= request.getParameter("success") %>
 				</div>
 			<% } %>
 			 <div class="form-group">
@@ -97,12 +103,32 @@
                 <button class="form-submit">Cập nhật bài viết</button>
             </div>
         </form>
+        <% AuthContext context = new AuthContext(request);
+        	if (context.isInRole("ADMIN")) {
+        %>
+	        <% if (post.getState().equals("Đang chờ duyệt")) { %>
+	        	<form method="POST" action="/posts/publish">
+	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
+	               	<button class="form-submit" type="submit">Duyệt bài viết</button>
+	           	</form>
+	       	<% } else if (post.getState().equals("Đang phát hành")) {%>
+				<form method="POST" action="/posts/ban">
+	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
+	               	<button class="form-submit" type="submit">Cấm bài viết</button>
+	           	</form>
+	        <% } else { %>
+	            <form method="POST" action="/posts/publish">
+	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
+	               	<button class="form-submit" type="submit">Ngừng cấm bài viết</button>
+	           	</form>
+	        <% } %>
+        <% } %>
     </div>
 </body>
 <script src="../../public/lib/ckeditor/ckeditor.js"></script>
 <script src="../../public/js/validation.js"></script>
 <script src="../../public/js/post_insert.js"></script>
 <script>
-	
+
 </script>
 </html>

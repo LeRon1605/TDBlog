@@ -53,6 +53,15 @@ public class PostBO extends BaseBO{
 	public Post getById(String id) {
 		return postDAO.getById(id);
 	}
+	
+	public Post getWithStateById(String id) {
+		Post post = postDAO.getById(id);
+		if (post == null)
+			return null;
+		State state = stateDAO.getCurrentStateOfPost(post.getID());
+		post.setState(state.getStateStr());
+		return post;
+	}
   
 	public boolean deletePost(String id) {
 		if (id == null || id.isEmpty()) {
@@ -90,9 +99,40 @@ public class PostBO extends BaseBO{
 			return false;
 		}
 		if(postDAO.getById(post.getID()) != null) {
+			post.setTotalTime(post.getContent().split(" ").length / 200);
 			post.setUpdatedAt(Timestamp.from(Instant.now()));
 			postDAO.updatePost(post);
 			return true;
+		}
+		return false;
+	}
+	public boolean publishPost(String id) {
+		Post post = postDAO.getById(id);
+		if (post == null)
+			return false;
+		State state = stateDAO.getCurrentStateOfPost(id);
+		if (state.getState() == PostState.Pending || state.getState() == PostState.Ban) {
+			State newState = new State();
+			newState.setId(generateID());
+			state.setState(PostState.Publish);
+			state.setPostID(post.getID());
+			state.setAt(Timestamp.from(Instant.now()));
+			return stateDAO.add(state);
+		}
+		return false;
+	}
+	public boolean banPost(String id) {
+		Post post = postDAO.getById(id);
+		if (post == null)
+			return false;
+		State state = stateDAO.getCurrentStateOfPost(id);
+		if (state.getState() == PostState.Publish) {
+			State newState = new State();
+			newState.setId(generateID());
+			state.setState(PostState.Ban);
+			state.setPostID(post.getID());
+			state.setAt(Timestamp.from(Instant.now()));
+			return stateDAO.add(state);
 		}
 		return false;
 	}

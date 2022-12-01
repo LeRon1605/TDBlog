@@ -41,7 +41,7 @@ public class UpdateServlet extends BaseServlet {
 		String id = request.getParameter("id");
 		
 		ArrayList<Tag> tags = tagBO.getAll();
-		Post post = postBO.getById(id);
+		Post post = postBO.getWithStateById(id);
 		
 		if(post != null) {
 			if (this.authContext.isInRole("ADMIN") || this.authContext.getClaim("UserID").getValue().equals(post.getAuthorID())) {
@@ -87,7 +87,7 @@ public class UpdateServlet extends BaseServlet {
 				    post.setImage("/public/uploads/" + Paths.get(inputFile.getSubmittedFileName()).getFileName().toString());
 					boolean result = postBO.updatePost(post);
 					if (result) {
-						request.setAttribute("success", true);
+						request.setAttribute("success", "Cập nhật bài viết thành công");
 					}else {
 						request.setAttribute("error", "Cập nhât bài viết thất bại");
 					}
