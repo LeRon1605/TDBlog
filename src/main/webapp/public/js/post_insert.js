@@ -3,6 +3,7 @@
     formGroupSelector: '.form-group',
     errorSelector: '.form-message',
     rules: [
+		Validator.isRequired('#inputImage', 'Vui lòng chọn hình ảnh!'),
         Validator.isRequired('#title', 'Vui lòng nhập tên bài viết!'),
         Validator.isRequired('#tag', 'Vui lòng chọn mức độ!'),
         Validator.isRequired('#editor1', 'Vui lòng nhập nội dung!'),

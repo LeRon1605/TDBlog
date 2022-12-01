@@ -22,7 +22,7 @@
     <!-- Body -->
     <div class="container__background h-[600px] w-full-base bg-cover bg-right-top"
         style="background-image: url('https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png')">
-        <div class="container__bg-sup absolute left-[250px] top-36 font-bold">
+        <div class="container__bg-sup absolute left-[160px] top-36 font-bold">
             <h1 class="container__bg-heading text-[56px] mb-4 max-w-2xl">Góc nhìn đa chiều của thế hệ trẻ Việt Nam</h1>
             <h2 class="container__bg-detail text-[30px] max-w-2xl font-medium mb-4 text-[#161616]">
             	Viết - Chia sẻ - Kết nối - Chiêm nghiệm - Tất cả tại Spiderum
@@ -49,12 +49,15 @@
                                     <div class="container_header-item flex w-full">
                                         <div class="col c-5">
                                             <div class="container__header-item-img  ">
-                                                <img src="<%= posts.get(i).getImage() %>" alt="" class="w-full mr-5 rounded-md">
+                                                <img src="<%= posts.get(i).getImage() %>" alt="" class="w-full mr-5 rounded-md max-h-40 object-cover">
                                             </div>
                                         </div>
                                         <div class="col c-7">
-                                            <div class="container__header-item-content w-full justify-between ">
-                                                <a href="" class="container__header-item-heading inline-block text-xs"><%= posts.get(i).getTag() %></a>
+                                            <div class="container__header-item-content w-full justify-between">
+                                                <div class="container__header-item-heading flex justify-between">
+                                                	<a href="#!" class="container__header-item-heading inline-block text-xs"><%= posts.get(i).getTag() %></a>
+                                                	<p class="text-[12px]"><%= posts.get(i).getTotalTime()%> phút</p>
+                                                </div>
                                                 <a href="/posts?id=<%= posts.get(i).getID() %>" class="container__header-item-title inline-block text-base font-medium my-1"><%= posts.get(i).getName() %></a>
                                                 <span class="container__header-item-desc text-xs max-h-5"><%= posts.get(i).getContent() %></span>
                                                 <div class="container__header-item-bottom flex justify-between items-end mt-2">
@@ -93,12 +96,15 @@
                                     <div class="container__body-item flex w-full">
                                         <div class="col c-5">
                                             <div class="container__body-item-img  ">
-                                                <img src="<%= posts.get(i).getImage() %>" alt="" class="w-full mr-5 rounded-md">
+                                                <img src="<%= posts.get(i).getImage() %>" alt="" class="w-full mr-5 rounded-md max-h-40 object-cover">
                                             </div>
                                         </div>
                                         <div class="col c-7">
                                             <div class="container__body-item-content w-full justify-between ">
-                                                <a href="" class="container__body-item-heading inline-block text-xs"><%= posts.get(i).getTag() %></a>
+                                                <div class="container__body-item-heading flex justify-between">
+                                                	<a href="" class="container__body-item-heading inline-block text-xs"><%= posts.get(i).getTag() %></a>
+                                                	<p class="text-[12px]"><%= posts.get(i).getTotalTime()%> phút</p>
+                                                </div>
                                                 <a href="/posts?id=<%= posts.get(i).getID() %>" class="container__body-item-title inline-block text-base font-medium my-1"><%= posts.get(i).getName() %></a>
                                                 <span class="container__body-item-desc text-xs max-h-5"><%= posts.get(i).getContent() %></span>
                                                 <div class="container__body-item-bottom flex justify-between items-end mt-2">

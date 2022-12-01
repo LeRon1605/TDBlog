@@ -10,7 +10,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../public/css/base.css">
     <link rel="stylesheet" href="../../public/css/grid.css">
     <link rel="stylesheet" href="../../public/css/admin_insert_problem.css">
     <title>Thêm bài tập</title>
@@ -30,22 +29,24 @@
 
 <body>
 	<% Post post = (Post)request.getAttribute("post");  %>
+	<jsp:include page="../shared/header.jsp" flush="true" />
+	
     <div class="main">
         <form action="/posts/update" method="POST" class="form" id="form_add-problem" enctype="multipart/form-data">
             <h1 class="heading">Cập nhật bài viết</h1>
             <div class="spacer"></div>
             <% if (request.getParameter("error") != null) { %>
-	        	<div class="alert alert-danger text-center" role="alert">
+	        	<div class="alert alert-danger text-center text-[16px]" role="alert">
 			  		<%= request.getParameter("error") %>
 				</div>
 			<% } %>
 			<% if (request.getAttribute("success") != null) { %>
-	        	<div class="alert alert-success text-center" role="alert">
+	        	<div class="alert alert-success text-center text-[16px]" role="alert">
 			  		<%= request.getAttribute("success") %>
 				</div>
 			<% } %>
 			<% if (request.getParameter("success") != null) { %>
-	        	<div class="alert alert-success text-center" role="alert">
+	        	<div class="alert alert-success text-center text-[16px]" role="alert">
 			  		<%= request.getParameter("success") %>
 				</div>
 			<% } %>

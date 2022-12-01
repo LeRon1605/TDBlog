@@ -6,19 +6,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../../public/css/grid.css">
     <link rel="stylesheet" href="../../public/css/action.css">
     <link rel="stylesheet" href="../../public/css/reset.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body>	
-	<div id="header" class="shadow-xl fixed w-screen bg-[#fff] z-20">
+	<div id="header" class="shadow-xl fixed w-screen bg-[#fff] z-20 mx-[-12px]">
         <div class="grid wide">
             <div class="header__news flex justify-between h-20 items-center ">
                 <div class="header__news-info flex">
-                    <a href=""><img src="https://spiderum.com/assets/icons/wideLogo.png" alt=""
-                            class="header_news-logo w-40 px-3 border-r border-solid"></a>
+                    <a href="/home"><img src="https://spiderum.com/assets/icons/wideLogo.png" alt=""
+                            class="header_news-logo w-40 pr-3 border-r border-solid"></a>
                     <div class="header__news-network flex justify-between">
                         <a href="https://www.facebook.com/tn.9.3.02/" target="_blank"><i class="fa-brands fa-facebook-f text-xl text-[#606266] px-3 mt-1"></i></a>
                         <a href="https://www.facebook.com/le.ron.399" target="_blank"><i class="fa-brands fa-instagram text-xl text-[#606266] px-3 mt-1"></i></a>
@@ -34,7 +35,7 @@
                     </form>
                     
                     <div class="header__news-non-action flex relative ">
-                        <a href="/posts/insert" class="px-6 border border-solid border-[#e3e3e3] rounded-3xl bg-[#fff] font-normal mx-5 flex items-center">
+                        <a href="/posts/insert" class="px-6 py-2 border border-solid border-[#e3e3e3] rounded-3xl bg-[#fff] font-normal mx-5 flex items-center p">
                             <i class="fa-solid fa-pen-nib mr-1"></i>
                             <span>Viết bài</span>
                         </a>
@@ -42,10 +43,11 @@
 					
 					<% AuthContext context = new AuthContext(request); %>
 					<% if (context.isAuthenticated()) { %>
-						<div class="header__news-user">
+						<div class="header__news-user relative">
                             <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="w-12 h-12 rounded-full cursor-pointer">
-                            <div
-                                class="header__news-subUser absolute bg-[#fff] w-[300px] right-0 top-16 shadow-lg shadow-gray-600 rounded-sm hidden">
+                            
+                            
+                            <div class="header__news-subUser absolute bg-[#fff] w-[300px] right-0 top-16 shadow-lg shadow-gray-600 rounded-sm hidden">
                                 <div class="header__news-subUser-heading flex items-center p-3">
                                     <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="header__news-subUser-img h-12 w-12 mr-4 rounded-full">
                                     <div class="header__news-subUser-info w-48">
@@ -77,7 +79,7 @@
                             </div>
                         </div>
 					<% } else { %>
-						<div class="header__news-action">
+						<div class="header__news-action flex">
 	                        <div class="header__news-register mr-5">
 	                            <a href="/auth/register" class="header__news-text px-6 py-2 text-base">Đăng ký</a>
 	                        </div>
