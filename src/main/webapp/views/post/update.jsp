@@ -35,7 +35,7 @@
 	<% Post post = (Post)request.getAttribute("post");  %>
 	<jsp:include page="../shared/header.jsp" flush="true" />
 	
-    <div class="main pt-[120px]">
+    <div class="main pt-[120px] relative">
         <form action="/posts/update" method="POST" class="form" id="form_add-problem" enctype="multipart/form-data">
             <h1 class="heading">Cập nhật bài viết</h1>
             <div class="spacer"></div>
@@ -54,7 +54,7 @@
 			  		<%= request.getParameter("success") %>
 				</div>
 			<% } %>
-			 <div class="form-group">
+			<div class="form-group">
                 <label for="id" class="form-label">ID bài viết</label>
                 <input id="id" name="id" type="text" class="form-control" value="<%= post.getID()%>" readonly>
                 <span class="form-message"></span>
@@ -67,13 +67,12 @@
             </div>
             
             <div class="form-group">
-                	<img src="<%= post.getImage() %>"
-                         alt="" class="img-fluid rounded img-thumbnail" id="image">
-                    <label class="custom-file-upload mt-3">
-                    	<input id="inputImage" type="file" name="image" value = "<%= post.getImage() %>"/>
+                <img src="<%= post.getImage() %>" alt="" class="img-fluid rounded img-thumbnail" id="image">
+                <label class="custom-file-upload mt-3">
+                  	<input id="inputImage" type="file" name="image" value = "<%= post.getImage() %>"/>
                     	Chọn hình ảnh
                     </label>
-                    <span class="form-message"></span>
+                <span class="form-message"></span>
             </div>
 
             <div class="form-group">
@@ -104,40 +103,45 @@
 		  		<%  } %>
 			<% } %>
 
-            <div class="form-btn">
-                <button class="form-submit" type="submit">Cập nhật bài viết</button>
-                 <% AuthContext context = new AuthContext(request);
+            <div class="form-btn" >
+                <button class="form-submit" type="submit">Cập nhật bài viết</button> 
+    		</div>
+    	</form>
+    	<% AuthContext context = new AuthContext(request);
         	if (context.isInRole("ADMIN")) {
         %>
+        	<div class="absolute bottom-14 left-[460px] ">
 	        <% if (post.getState().equals("Đang chờ duyệt")) { %>
-	        	<form method="POST" action="/posts/publish">
-	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
-	               	<button class="form-submit" type="submit">Duyệt bài viết</button>
-	           	</form>
-	           	<form method="POST" action="/posts/ban">
-	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
-	               	<button class="form-submit" type="submit">Cấm bài viết</button>
-	           	</form>
+	        		<div class="flex">
+		        		<form method="POST" action="/posts/publish">
+			         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
+			               	<button class="form-submit" type="submit" style="background-color: #27d9ff !important;">Duyệt bài viết</button>
+			           	</form>
+			           	<form method="POST" action="/posts/ban">
+			         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
+			               	<button class="form-submit" style="background-color: red !important;" type="submit">Cấm bài viết</button>
+			           	</form>
+		        	</div>
 	       	<% } else if (post.getState().equals("Đang phát hành")) {%>
 				<form method="POST" action="/posts/ban">
 	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
-	               	<button class="form-submit" type="submit">Cấm bài viết</button>
+	               	<button class="form-submit" style="background-color: red !important;" type="submit">Cấm bài viết</button>
 	           	</form>
 	        <% } else { %>
 	            <form method="POST" action="/posts/publish">
 	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
-	               	<button class="form-submit" type="submit">Ngừng cấm bài viết</button>
+	               	<button class="form-submit" type="submit" style="background-color: #27d9ff !important;">Ngừng cấm bài viết</button>
 	           	</form>
 	        <% } %>
         <% } %>
+       	</div>
     </div>
-            </div>
-        </form>
-       
+     
+       	
 </body>
 <script src="../../public/lib/ckeditor/ckeditor.js"></script>
 <script src="../../public/js/validation.js"></script>
-<script src="../../public/js/post_insert.js"></script>
+<script src="../../public/js/post_update.js"></script>
 <script>
 
 </script>

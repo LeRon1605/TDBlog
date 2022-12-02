@@ -17,9 +17,9 @@
 	<div id="header" class="shadow-xl fixed w-screen bg-[#fff] z-20 mx-[-12px]">
         <div class="grid wide">
             <div class="header__news flex justify-between h-20 items-center ">
-                <div class="header__news-info flex">
-                    <a href="/home"><img src="https://spiderum.com/assets/icons/wideLogo.png" alt=""
-                            class="header_news-logo w-40 pr-3 border-r border-solid"></a>
+                <div class="header__news-info flex items-center">
+                    <a href="/home" class="flex border-r border-solid pr-3 font-semibold text-[18px] hover:text-[#000]"><img src="../../public/images/TD.png" alt=""
+                            class="header_news-logo w-12 pr-3 "> TDBlog</a>
                     <div class="header__news-network flex justify-between">
                         <a href="https://www.facebook.com/tn.9.3.02/" target="_blank"><i class="fa-brands fa-facebook-f text-xl text-[#606266] px-3 mt-1"></i></a>
                         <a href="https://www.facebook.com/le.ron.399" target="_blank"><i class="fa-brands fa-instagram text-xl text-[#606266] px-3 mt-1"></i></a>
