@@ -29,8 +29,6 @@ public class HomeServlet extends BaseServlet {
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
-		
 		String sortBy = request.getParameter("sortBy") != null ? (String)request.getParameter("sortBy") : "";
 		String keyword = request.getParameter("keyword") != null ? (String)request.getParameter("keyword") : "";
 		int state = request.getParameter("state") != null ? Integer.parseInt(request.getParameter("state")) : -1;
@@ -48,10 +46,6 @@ public class HomeServlet extends BaseServlet {
 		request.setAttribute("userStatistic", userStatistic);
 		request.setAttribute("posts", posts);
 		request.getRequestDispatcher("/views/admin/home/index.jsp").forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doPost(request, response);
 	}
 
 }

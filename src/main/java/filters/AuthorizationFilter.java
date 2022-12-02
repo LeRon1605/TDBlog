@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import core.Auth.AuthContext;
+import core.Auth.SessionAuthContext;
 
 @WebFilter(urlPatterns = {"/admin", "/posts/insert", "/posts/update", "/posts/delete, /me/posts"})
 public class AuthorizationFilter implements Filter{
@@ -20,7 +20,7 @@ public class AuthorizationFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		AuthContext context = new AuthContext((HttpServletRequest)request);
+		SessionAuthContext context = new SessionAuthContext((HttpServletRequest)request);
 		if (!context.isAuthenticated())
 			((HttpServletResponse)response).sendRedirect("/auth/login");
 		else 

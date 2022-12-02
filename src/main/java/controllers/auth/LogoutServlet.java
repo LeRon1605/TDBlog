@@ -12,11 +12,10 @@ import controllers.BaseServlet;
 @WebServlet("/auth/logout")
 public class LogoutServlet extends BaseServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
 		if (this.authContext.isAuthenticated()) {
 			this.authContext.signOut();
-			response.sendRedirect("/home");
 		}
+		response.sendRedirect("/home");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

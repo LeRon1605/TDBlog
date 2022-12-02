@@ -114,7 +114,7 @@ public class PostDAO extends BaseDAO<Post>{
 				ON USER.ID = POST.AUTHORID
 				WHERE STATEHISTORY.AT = A.LASTED AND STATEHISTORY.STATE = 1
 				ORDER BY CREATEDAT DESC
-				LIMIT 6
+				LIMIT 4
 		""");
 	}
 }

@@ -22,7 +22,6 @@ public class RegisterServlet extends BaseServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doGet(req, resp);
 		if (this.authContext.isAuthenticated()) {
 			resp.sendRedirect("/home");
 		}else {
@@ -32,7 +31,6 @@ public class RegisterServlet extends BaseServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doGet(req, resp);
 		req.setCharacterEncoding("utf-8");
 		if (this.authContext.isAuthenticated()) {
 			resp.sendRedirect("/home");

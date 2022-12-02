@@ -7,18 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import core.Auth.AuthContext;
+import core.Auth.SessionAuthContext;
+import core.Auth.IAuthContext;
 
 public abstract class BaseServlet extends HttpServlet {
-	protected AuthContext authContext;
+	protected IAuthContext authContext;
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		authContext = new AuthContext(req);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		authContext = new AuthContext(req);
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		authContext = new SessionAuthContext(req);
+		super.service(req, resp);
 	}
 }

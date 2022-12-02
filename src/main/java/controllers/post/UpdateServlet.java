@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import controllers.BaseServlet;
-import core.Auth.AuthContext;
+import core.Auth.SessionAuthContext;
 import core.Validator.ValidateResult;
 import core.Validator.Validator;
 import models.BO.PostBO;
@@ -36,8 +36,6 @@ public class UpdateServlet extends BaseServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
-
 		String id = request.getParameter("id");
 		
 		ArrayList<Tag> tags = tagBO.getAll();
@@ -58,7 +56,6 @@ public class UpdateServlet extends BaseServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doPost(request, response);
 		request.setCharacterEncoding("utf-8");
 		
 		String name = (String)request.getParameter("title");

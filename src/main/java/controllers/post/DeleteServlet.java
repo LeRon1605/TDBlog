@@ -22,7 +22,6 @@ public class DeleteServlet extends BaseServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doPost(request, response);
 		String id = request.getParameter("id");
 		String returnUrl = request.getParameter("returnUrl");
 		Post post = postBO.getById(id);

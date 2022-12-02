@@ -1,4 +1,5 @@
-<%@page import="core.Auth.AuthContext"%>
+<%@page import="core.Auth.IAuthContext"%>
+<%@page import="core.Auth.SessionAuthContext"%>
 <%@page import="models.Bean.Tag"%>
 <%@page import="models.Bean.Post"%>
 <%@page import="java.util.ArrayList"%>
@@ -12,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../../public/css/grid.css">
     <link rel="stylesheet" href="../../public/css/admin_insert_problem.css">
-    <title>Thêm bài tập</title>
+    <title>Cập nhật bài viết</title>
     <style>
     	input[type="file"] {
 		    display: none !important;
@@ -32,44 +33,59 @@
 </head>
 
 <body>
-	<% Post post = (Post)request.getAttribute("post");  %>
+	<%
+	 	Post post = (Post)request.getAttribute("post");
+	%>
 	<jsp:include page="../shared/header.jsp" flush="true" />
 	
     <div class="main pt-[120px] relative">
         <form action="/posts/update" method="POST" class="form" id="form_add-problem" enctype="multipart/form-data">
             <h1 class="heading">Cập nhật bài viết</h1>
             <div class="spacer"></div>
-            <% if (request.getParameter("error") != null) { %>
+            <%
+             if (request.getParameter("error") != null) {
+            %>
 	        	<div class="alert alert-danger text-center text-[16px]" role="alert">
 			  		<%= request.getParameter("error") %>
 				</div>
-			<% } %>
-			<% if (request.getAttribute("success") != null) { %>
+			<%
+             }
+			%>
+			<%
+			
+			 if (request.getAttribute("success") != null) {
+			%>
 	        	<div class="alert alert-success text-center text-[16px]" role="alert">
-			  		<%= request.getAttribute("success") %>
+			  		<%=request.getAttribute("success")%>
 				</div>
-			<% } %>
-			<% if (request.getParameter("success") != null) { %>
+			<%
+			 }
+			%>
+			<%
+			 if (request.getParameter("success") != null) {
+			%>
 	        	<div class="alert alert-success text-center text-[16px]" role="alert">
-			  		<%= request.getParameter("success") %>
+			  		<%=request.getParameter("success")%>
 				</div>
-			<% } %>
+			<%
+			 }
+			%>
 			<div class="form-group">
                 <label for="id" class="form-label">ID bài viết</label>
-                <input id="id" name="id" type="text" class="form-control" value="<%= post.getID()%>" readonly>
+                <input id="id" name="id" type="text" class="form-control" value="<%=post.getID()%>" readonly>
                 <span class="form-message"></span>
             </div>
             
             <div class="form-group">
                 <label for="title" class="form-label">Tiêu đề bài viết</label>
-                <input id="title" name="title" type="text" placeholder="Nhập tên bài tập" class="form-control" value="<%= post.getName()%>">
+                <input id="title" name="title" type="text" placeholder="Nhập tên bài tập" class="form-control" value="<%=post.getName()%>">
                 <span class="form-message"></span>
             </div>
             
             <div class="form-group">
                 <img src="<%= post.getImage() %>" alt="" class="img-fluid rounded img-thumbnail" id="image">
                 <label class="custom-file-upload mt-3">
-                  	<input id="inputImage" type="file" name="image" value = "<%= post.getImage() %>"/>
+                  	<input id="inputImage" type="file" name="image" value = "<%=post.getImage()%>"/>
                     	Chọn hình ảnh
                     </label>
                 <span class="form-message"></span>
@@ -78,39 +94,58 @@
             <div class="form-group">
                 <label for="tag" class="form-label">Thể loại</label>
                 <select id="tag" name="tag" class="form-control">
-                	<% ArrayList<Tag> tags = (ArrayList<Tag>)request.getAttribute("tags"); %>
+                	<%
+                	
+                	 ArrayList<Tag> tags = (ArrayList<Tag>)request.getAttribute("tags");
+                	%>
                     <option value="">Chọn thể loại</option>
-                    <% for (Tag tag: tags) { %>
-                    	<option value="<%=tag.getID()%>" <%= post.getTagID().equals(tag.getID()) ? "selected" : ""%> > <%= tag.getName() %></option>
-                    <% } %>
+                    <%
+                    
+                     for (Tag tag: tags) {
+                    %>
+                    	<option value="<%=tag.getID()%>" <%= post.getTagID().equals(tag.getID()) ? "selected" : ""%> > <%=tag.getName()%></option>
+                    <%
+                     }
+                    %>
                 </select>
                 <span class="form-message"></span>
             </div>
 
             <div class="form-group">
                 <label for="content" class="form-label">Nội dung bài viết</label>
-                <textarea name="content" id="editor1" cols="" rows="3" class="form-control-text"><%= post.getContent() %></textarea>
+                <textarea name="content" id="editor1" cols="" rows="3" class="form-control-text"><%=post.getContent()%></textarea>
                 <span class="form-message"></span>
             </div>
-            <% if (request.getAttribute("validation-error") != null) { %>
-			  	<% 
-			  		String[] validationError = (String[])request.getAttribute("validation-error"); 
-			  		for (String message: validationError) {
+            <%
+            
+             if (request.getAttribute("validation-error") != null) {
+            %>
+			  	<%
+	
+			  	 
+			  		  		String[] validationError = (String[])request.getAttribute("validation-error"); 
+			  		  		for (String message: validationError) {
 			  	%>
 			  	<div class="alert alert-danger text-center" role="alert">		
-		  			<%= message %>
+		  			<%= message%>
 		  		</div>
-		  		<%  } %>
-			<% } %>
+		  		<%
+			  		  		}
+		  		%>
+			<%
+             }
+			%>
 
             <div class="form-btn" >
                 <button class="form-submit" type="submit">Cập nhật bài viết</button> 
     		</div>
     	</form>
-    	<% AuthContext context = new AuthContext(request);
-        	if (context.isInRole("ADMIN")) {
-        %>
-        	<div class="absolute bottom-14 left-[460px] ">
+    	<%
+    	
+    	IAuthContext context = new SessionAuthContext(request);
+    	        	if (context.isInRole("ADMIN")) {
+    	%>
+        	<div class="absolute bottom-14 left-[460px] " style="transform: translateX(100%)">
 	        <% if (post.getState().equals("Đang chờ duyệt")) { %>
 	        		<div class="flex">
 		        		<form method="POST" action="/posts/publish">

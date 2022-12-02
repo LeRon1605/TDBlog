@@ -29,17 +29,6 @@
 		<div class="">
 			<div class="row">
 				<div class="col c-2">
-					<div class="container_action fixed mx-[60px] mb-[60px] flex flex-col justify-center h-screen">
-						<div class="container_action-item flex justify-center flex-col items-center mb-[160px]">
-							<i class="fa-solid fa-caret-up text-[30px] mb-[20px]"></i>
-							<div class="container_action-owned ">
-								<a href="" class="inline-block"> 
-									<img src="<%= post.getAuthorAvatar() %>" alt="" class="container_action-owned-image w-16 h-16 rounded-full">
-								</a>
-							</div>
-							<i class="fa-solid fa-caret-down text-[30px] mt-[20px]"></i>
-						</div>
-					</div>
 				</div>
 
 				<div class="col c-8">

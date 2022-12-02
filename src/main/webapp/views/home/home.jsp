@@ -20,15 +20,18 @@
 <body>
 	<jsp:include page="../shared/header.jsp" flush="true" />
     <!-- Body -->
-    <div class="container__background h-[600px] w-full-base bg-cover bg-right-top"
-        style="background-image: url('../../public/images/blog-banner.jpg')">
-        <div class="container__bg-sup absolute left-[160px] top-36 font-bold">
+    <div class="container__background h-[550px] w-full-base bg-cover bg-right-top grid wide"
+        style="display: flex; align-items: center">
+        <div class="container__bg-sup left-[160px] top-36 font-bold">
             <h1 class="container__bg-heading text-[56px] mb-4 max-w-2xl">Góc nhìn đa chiều của thế hệ trẻ Việt Nam</h1>
             <h2 class="container__bg-detail text-[30px] max-w-xl font-medium mb-4 text-[#161616]">
-            	Viết - Chia sẻ - Kết nối - Chiêm nghiệm Tất cả tại Spiderum
+            	Viết - Chia sẻ - Kết nối - Chiêm nghiệm Tất cả tại TDBlog
            	</h2>
            	<a href="/posts/insert" class="px-6 py-2 border border-solid border-[#333] rounded-3xl bg-[#fff] font-normal hover:cursor-pointer">Đăng bài viết</a>
-          
+        </div>
+        <div>
+        	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+			<lottie-player src="https://assets8.lottiefiles.com/packages/lf20_fGseie.json"  background="transparent"  speed="1"  style="width: 500px; height: 500px;"  loop autoplay></lottie-player>
         </div>
     </div>
 
@@ -134,7 +137,7 @@
                 </div>
             </div>
         </div>
-    <div id="footer" class="h-80">
+    <div id="footer" class="h-20">
     </div>
 
 </body>

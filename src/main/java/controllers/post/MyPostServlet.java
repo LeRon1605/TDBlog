@@ -20,7 +20,6 @@ public class MyPostServlet extends BaseServlet {
 		postBO = new PostBO();
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
 		String authorId = this.authContext.getClaim("UserID").getValue();
 		String sortBy = request.getParameter("sortBy") != null ? (String)request.getParameter("sortBy") : "";
 		String keyword = request.getParameter("keyword") != null ? (String)request.getParameter("keyword") : "";

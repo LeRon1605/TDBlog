@@ -23,7 +23,6 @@ public class DetailServlet extends BaseServlet{
 		stateBO = new StateBO();
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
 		String id = request.getParameter("id");
 		Post post = postBO.getWithTagAndAuthor(id);
 		if (post == null) {

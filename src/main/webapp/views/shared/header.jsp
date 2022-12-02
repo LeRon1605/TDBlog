@@ -1,4 +1,5 @@
-<%@page import="core.Auth.AuthContext"%>
+<%@page import="core.Auth.IAuthContext"%>
+<%@page import="core.Auth.SessionAuthContext"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,7 +42,9 @@
                         </a>
                     </div>
 					
-					<% AuthContext context = new AuthContext(request); %>
+					<%
+										IAuthContext context = new SessionAuthContext(request);
+										%>
 					<% if (context.isAuthenticated()) { %>
 						<div class="header__news-user relative">
                             <img src="<%= context.getClaim("Avatar").getValue() %>" alt="" class="w-12 h-12 rounded-full cursor-pointer">

@@ -116,7 +116,6 @@
                 <thead class="table-white">
                     <tr>
                         <th scope="col">STT</th>
-                        <th scope="col">Mã bài viết</th>
                         <th scope="col">Tên bài viết</th>
                         <th scope="col">Thể loại</th>
                         <th scope="col">Trạng thái</th>
@@ -132,9 +131,6 @@
                                     <th scope="row">
                                         <%= i + 1 %>
                                     </th>
-                                    <td>
-                                        <%= posts.get(i).getID() %>
-                                    </td>
                                     <td style="text-align: left;">
                                         <%= posts.get(i).getName() %>
                                     </td>

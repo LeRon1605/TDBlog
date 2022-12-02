@@ -24,7 +24,6 @@ public class LoginServlet extends BaseServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
 		if (this.authContext.isAuthenticated()) {
 			response.sendRedirect("/home");
 		}else {
@@ -33,7 +32,6 @@ public class LoginServlet extends BaseServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(request, response);
 		if (this.authContext.isAuthenticated()) {
 			response.sendRedirect("/home");
 		}else {

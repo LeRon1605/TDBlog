@@ -19,7 +19,6 @@ public class PublishServlet extends BaseServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		super.doPost(request, response);
 		if (this.authContext.isInRole("ADMIN")) {
 			String id = request.getParameter("id");
 			if (id == null)

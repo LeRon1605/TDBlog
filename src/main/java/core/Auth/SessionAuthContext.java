@@ -3,10 +3,10 @@ package core.Auth;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class AuthContext {
+public class SessionAuthContext implements IAuthContext {
 	private HttpSession session;
 	
-	public AuthContext(HttpServletRequest request) {
+	public SessionAuthContext(HttpServletRequest request) {
 		session = request.getSession();
 	}
 	
