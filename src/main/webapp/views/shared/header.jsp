@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="header__news-subUser-item p-3 hover:bg-gray-300 mx-2 mb-2">
                                         <i class="fa-solid fa-gear text-[#161616] w-5"></i>
-                                        <a href="" class="header__news-subUser-text text-[#161616]">Tùy chỉnh tài
+                                        <a href="" class="header__news-subUser-text text-[#161616] ">Tùy chỉnh tài
                                             khoản</a>
                                     </div>
                                 </div>

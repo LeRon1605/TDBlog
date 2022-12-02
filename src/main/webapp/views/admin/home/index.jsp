@@ -22,12 +22,40 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="../../../public/css/reset.css" rel="stylesheet">
     <link href="../../../public/css/admin_home.css" rel="stylesheet">
+    <style>
+    	th {
+			min-width: 100px;
+		}
+		td,th {
+			text-align: center;
+		}
+		table {
+			border: 2px solid #333;
+		}
+		.btn-action {
+			padding: 5px;
+			margin: 0 5px;
+			border: 1px solid #333;
+			border-radius: 10px;
+			width: 50px;
+			text-align: center;
+			color: #000;
+		}
+		
+		.btn-action:hover {
+			color: #000;
+			text-decoration: underline;
+		}
+    
+    </style>
 </head>
 
 <body>
     <jsp:include page="../../shared/header.jsp" flush="true" />
-    <div class="container" style="width: 80vw !important">
-        <div class="row g-4">
+    
+    <div class="container pt-[140px]">
+        <div class="grid wide">
+        	<div class="row g-4">
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
@@ -52,7 +80,7 @@
                     <a class="ms-3 text-decoration-none btn-add" href="/posts/insert">
                         Thêm bài viết
                     </a>
-                    <form class="block-search d-flex" action="/admin" method="GET">
+                    <form class="block-search d-flex" style="z-index:10;"" action="/admin" method="GET">
                         <div class="d-flex">
                             <% String sortBy=(String)request.getParameter("sortBy"); %>
                                 <select id="select" name="sortBy">
@@ -112,7 +140,7 @@
                                     <td>
                                         <%= posts.get(i).getID() %>
                                     </td>
-                                    <td>
+                                    <td style="text-align: left;">
                                         <%= posts.get(i).getName() %>
                                     </td>
                                     <td>
@@ -129,10 +157,10 @@
                                     </td>
                                     <td class="d-flex justify-content-between">
                                         <a href="/posts?id=<%= posts.get(i).getID() %>"
-                                            class="text-decoration-none main-color">Xem</a>
+                                            class="text-decoration-none main-color btn-action bg-success">Xem</a>
                                         <a href="/posts/update?id=<%= posts.get(i).getID() %>"
-                                            class="text-decoration-none main-color">Sửa</a>
-                                        <a href="" class="text-decoration-none main-color">Xóa</a>
+                                            class="text-decoration-none main-color btn-action bg-warning">Sửa</a>
+                                        <a href="" class="text-decoration-none main-color btn-action bg-danger">Xóa</a>
                                     </td>
                                 </tr>
                                 <% } %>
@@ -151,6 +179,7 @@
                     </li>
                 </ul>
             </nav>
+        </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"

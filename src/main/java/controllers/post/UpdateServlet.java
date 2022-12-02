@@ -64,7 +64,7 @@ public class UpdateServlet extends BaseServlet {
 		String name = (String)request.getParameter("title");
 		String content = (String)request.getParameter("content");
 		String tagID = (String)request.getParameter("tag");
-		
+		String image = (String)request.getParameter("image");
 		String id = request.getParameter("id");
 		Post post = postBO.getById(id);
 
@@ -75,6 +75,7 @@ public class UpdateServlet extends BaseServlet {
 				post.setName(name);
 				post.setContent(content);
 				post.setTagID(tagID);
+				post.setImage(image);
 				
 				ValidateResult modelState = Validator.validate(post);
 				if (modelState.isFailure()) {
