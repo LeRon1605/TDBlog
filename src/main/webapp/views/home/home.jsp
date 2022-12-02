@@ -21,11 +21,11 @@
 	<jsp:include page="../shared/header.jsp" flush="true" />
     <!-- Body -->
     <div class="container__background h-[600px] w-full-base bg-cover bg-right-top"
-        style="background-image: url('https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png')">
+        style="background-image: url('../../public/images/blog-banner.jpg')">
         <div class="container__bg-sup absolute left-[160px] top-36 font-bold">
             <h1 class="container__bg-heading text-[56px] mb-4 max-w-2xl">Góc nhìn đa chiều của thế hệ trẻ Việt Nam</h1>
-            <h2 class="container__bg-detail text-[30px] max-w-2xl font-medium mb-4 text-[#161616]">
-            	Viết - Chia sẻ - Kết nối - Chiêm nghiệm - Tất cả tại Spiderum
+            <h2 class="container__bg-detail text-[30px] max-w-xl font-medium mb-4 text-[#161616]">
+            	Viết - Chia sẻ - Kết nối - Chiêm nghiệm Tất cả tại Spiderum
            	</h2>
            	<a href="/posts/insert" class="px-6 py-2 border border-solid border-[#333] rounded-3xl bg-[#fff] font-normal hover:cursor-pointer">Đăng bài viết</a>
           

@@ -23,10 +23,8 @@ function Validator(options) {
     // Lặp qua và kiểm tra từng rule
     for (var i = 0; i < rules.length; i++) {
       switch (inputElement.type) {
-        case "radio":
-          errorMessage = rules[i](
-            formElement.querySelector(rule.selector + ":checked")
-          );
+        case "file":
+          errorMessage = rules[i](inputElement.value);
           break;
         default:
           errorMessage = rules[i](inputElement.value);
@@ -68,15 +66,12 @@ function Validator(options) {
             input
           ) {
             switch (input.type) {
-              case "radio":
-                values[input.name] = formElement.querySelector(
-                  'input[name="' + input.name + '"]:checked'
-                ).value;
-                break;
+              case "file":
+              	values[input.name] = input.files;
+              	break;
               default:
                 values[input.name] = input.value;
             }
-
             return values;
           },
           {});
