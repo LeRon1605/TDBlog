@@ -32,6 +32,11 @@ public class PostResultSetMapper implements IResultSetMapper<Post>{
 			post.setAuthor(null);
 		}
 		try {
+			post.setAuthorAvatar(row.getString("AVATAR"));
+		} catch (SQLException e) {
+			post.setAuthorAvatar(null);
+		}
+		try {
 			post.setTag(row.getString("TAG"));
 		}catch (SQLException e) {
 			post.setTag(null);

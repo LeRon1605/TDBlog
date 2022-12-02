@@ -34,7 +34,7 @@
 							<i class="fa-solid fa-caret-up text-[30px] mb-[20px]"></i>
 							<div class="container_action-owned ">
 								<a href="" class="inline-block"> 
-									<img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="container_action-owned-image w-16 h-16 rounded-full">
+									<img src="<%= post.getAuthorAvatar() %>" alt="" class="container_action-owned-image w-16 h-16 rounded-full">
 								</a>
 							</div>
 							<i class="fa-solid fa-caret-down text-[30px] mt-[20px]"></i>

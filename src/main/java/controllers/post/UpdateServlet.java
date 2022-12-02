@@ -83,9 +83,11 @@ public class UpdateServlet extends BaseServlet {
 					doGet(request, response);
 				}else {
 					Part inputFile = request.getPart("image");
-				    String path = request.getServletContext().getRealPath("public/uploads") + "\\" + Paths.get(inputFile.getSubmittedFileName()).getFileName().toString();
-				    inputFile.write(path);
-				    post.setImage("/public/uploads/" + Paths.get(inputFile.getSubmittedFileName()).getFileName().toString());
+					if (inputFile != null) {
+						String path = request.getServletContext().getRealPath("public/uploads") + "\\" + Paths.get(inputFile.getSubmittedFileName()).getFileName().toString();
+					    inputFile.write(path);
+					    post.setImage("/public/uploads/" + Paths.get(inputFile.getSubmittedFileName()).getFileName().toString());
+					}
 					boolean result = postBO.updatePost(post);
 					if (result) {
 						request.setAttribute("success", "Cập nhật bài viết thành công");

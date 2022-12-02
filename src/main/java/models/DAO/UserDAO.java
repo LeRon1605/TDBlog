@@ -18,10 +18,10 @@ public class UserDAO extends BaseDAO<User>{
 	
 	public boolean add(User user) {
 		String query = """
-				INSERT INTO USER(ID, NAME, USERNAME, PASSWORD, REGISTEREDAT, ROLEID)
-				VALUE(?, ?, ?, ?, ?, ?)
+				INSERT INTO USER(ID, NAME, USERNAME, PASSWORD, AVATAR, REGISTEREDAT, ROLEID)
+				VALUE(?, ?, ?, ?, ?, ?, ?)
 		""";
-		return this.executeQuery(query, new Object[] { user.getID(), user.getName(), user.getUsername(), user.getPassword(), user.getRegisteredAt(), user.getRoleID() });
+		return this.executeQuery(query, new Object[] { user.getID(), user.getName(), user.getUsername(), user.getPassword(), user.getAvatar(), user.getRegisteredAt(), user.getRoleID() });
 	}
 	
 	public User findByUsernameAndPassword(String username, String password) {

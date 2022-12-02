@@ -19,11 +19,14 @@
 			  	<%= request.getAttribute("error") %>
 			</div>
 		<% } %>
-        <form class="d-flex flex-column align-items-center justify-content-center has-validation" action="/auth/register" method="POST">
+		<div class="alert alert-danger text-center d-none" role="alert" style="width: 20rem" id="message">
+		  	
+		</div>
+        <form class="d-flex flex-column align-items-center justify-content-center has-validation" action="/auth/register" method="POST" id="form">
             <input class="mb-3 p-2" type="text" placeholder="Họ và tên" name="name"/>
             <input class="mb-3 p-2" type="text" placeholder="Tên đăng nhập" name="username"/>
-            <input class="mb-3 p-2" type="password" placeholder="Mật khẩu" name="password"/>
-            <input class="mb-3 p-2" type="password" placeholder="Xác nhận mật khẩu"/>
+            <input class="mb-3 p-2" type="password" placeholder="Mật khẩu" name="password" id="password"/>
+            <input class="mb-3 p-2" type="password" placeholder="Xác nhận mật khẩu" id="confirm-password"/>
             <input class="mb-3 p-2 text-center" value="Đăng kí" type="submit"/>
         </form>
         <% if (request.getAttribute("validation-error") != null) { %>
@@ -37,6 +40,21 @@
 		  		<%  } %>
 		<% } %>
         <span>Đã có tài khoản? <a href="/auth/login"> Đăng nhập ngay</a></span>
-    </div>        
+    </div>
+    <script type="text/javascript">
+    	const form = document.getElementById('form');
+    	const passwordField = document.getElementById('password');
+    	const confirmPasswordField = document.getElementById('confirm-password');
+    	const message = document.getElementById('message');
+    	
+    	form.addEventListener('submit', e => {
+    		if (passwordField.value != confirmPasswordField.value) {
+    			e.preventDefault();
+    			message.innerText = 'Mật khẩu xác nhận không đúng';
+    			message.classList.remove('d-none');
+    			message.classList.add('d-block');
+    		}
+    	});
+    </script>        
 </body>
 </html>

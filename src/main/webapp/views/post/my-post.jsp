@@ -37,25 +37,6 @@
 		th {
 			min-width: 100px;
 		}
-		td,th {
-			text-align: center;
-		}
-		table {
-			border: 2px solid #333;
-		}
-		.btn-action {
-			padding: 5px;
-			margin: 0 5px;
-			border: 1px solid #333;
-			border-radius: 10px;
-			width: 50px;
-			text-align: center;
-		}
-		
-		.btn-action:hover {
-			color: #000;
-			text-decoration: underline;
-		}
     </style>
 </head>
 
@@ -63,6 +44,23 @@
 	<jsp:include page="../shared/header.jsp" flush="true" />
 	
     <div class="container pt-[100px]">
+    	<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		       	Bạn có chắc chắn muốn xóa bài viết này?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal">Trở lại</button>
+		        <button type="button" class="btn btn-danger bg-danger" id="btnSubmit">Xóa</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
         <div class="grid wide">
         	<div class="bg-light p-4 mt-5 rounded">
 		            <table class="table table-bordered caption-top">
@@ -85,6 +83,21 @@
 		                                        out.print("selected"); }%>
 		                                        >Lượt xem</option>
 		                                </select>
+		                             <% String state=(String)request.getParameter("state"); %>
+                                    <select id="select" class="ms-3" name="state">
+                                        <option value="-1" <% if (state==null || state.isEmpty()) {
+                                            out.print("selected"); }%>
+                                            >Trạng thái</option>
+                                        <option value="0" <% if (state !=null && state.equals("0")) {
+                                            out.print("selected"); }%>
+                                            >Đang chờ duyệt</option>
+                                        <option value="1" <% if (state !=null && state.equals("1")) {
+                                            out.print("selected"); } %>
+                                            >Đang phát hành</option>
+                                        <option value="2" <% if (state !=null && state.equals("2")) {
+                                            out.print("selected"); } %>
+                                            >Đã cấm</option>
+                                    </select>
 		                        </div>
 		                        <% String keyword=request.getParameter("keyword")==null ? "" :
 		                            (String)request.getParameter("keyword"); %>
@@ -128,42 +141,46 @@
 		                                    </td>
 		                                    <td class="d-flex justify-content-between">
 		                                        <a href="/posts?id=<%= posts.get(i).getID() %>"
-		                                            class="text-decoration-none main-color btn-action bg-success">Xem</a>
+		                                            class="text-decoration-none text-white btn bg-success me-1">Xem</a>
 		                                        <a href="/posts/update?id=<%= posts.get(i).getID() %>"
-		                                            class="text-decoration-none main-color btn-action bg-warning">Sửa</a>
-		                                        <a href="" class="text-decoration-none main-color btn-action bg-danger">Xóa</a>
+		                                            class="text-decoration-none text-white btn bg-warning me-1">Sửa</a>
+		                                        <button class="text-decoration-none text-white btn bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<%= posts.get(i).getID() %>" onClick="onClickBtnDelete(this)">Xóa</button>
 		                                    </td>
 		                                </tr>
 		                                <% } %>
 		                </tbody>
 		            </table>
-		            <nav class="d-flex justify-content-center">
-		                <ul class="pagination">
-		                    <li class="page-item"><a class="page-link main-color" href="#">Previous</a></li>
-		                    <li class="page-item"><a class="page-link main-color" href="#">1</a>
-		                    </li>
-		                    <li class="page-item"><a class="page-link main-color" href="#">2</a>
-		                    </li>
-		                    <li class="page-item"><a class="page-link main-color" href="#">3</a>
-		                    </li>
-		                    <li class="page-item"><a class="page-link main-color" href="#">Next</a>
-		                    </li>
-		                </ul>
-		            </nav>
 		        </div>
 		    </div>
         </div>
     </div>
+   <form action="/posts/delete" method="POST" class="d-none" id="delete-form">
+        	<input name="id" id="delete-id"/>
+        	<input name="returnUrl" value="/me/posts"/>
+    </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"
         integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
             $('select').niceSelect();
         });
+		const btnSubmit = document.getElementById('btnSubmit');
+		
+		function onClickBtnDelete(e) {
+			const id = e.dataset.id;
+			const deleteIdInput = document.getElementById('delete-id');
+			deleteIdInput.value = id;
+		}
+		
+		btnSubmit.addEventListener('click', e => {
+			const deleteForm = document.getElementById('delete-form');
+			deleteForm.submit();
+		});
     </script>
 </body>
 
