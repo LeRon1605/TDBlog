@@ -24,6 +24,10 @@
 		    padding: 6px 12px;
 		    cursor: pointer;
 		}
+		
+		[type=submit], button{
+			background-color: #2fe255 !important;
+		}
     </style>
 </head>
 
@@ -31,7 +35,7 @@
 	<% Post post = (Post)request.getAttribute("post");  %>
 	<jsp:include page="../shared/header.jsp" flush="true" />
 	
-    <div class="main">
+    <div class="main pt-[120px]">
         <form action="/posts/update" method="POST" class="form" id="form_add-problem" enctype="multipart/form-data">
             <h1 class="heading">Cập nhật bài viết</h1>
             <div class="spacer"></div>
@@ -101,10 +105,8 @@
 			<% } %>
 
             <div class="form-btn">
-                <button class="form-submit">Cập nhật bài viết</button>
-            </div>
-        </form>
-        <% AuthContext context = new AuthContext(request);
+                <button class="form-submit" type="submit">Cập nhật bài viết</button>
+                 <% AuthContext context = new AuthContext(request);
         	if (context.isInRole("ADMIN")) {
         %>
 	        <% if (post.getState().equals("Đang chờ duyệt")) { %>
@@ -125,6 +127,9 @@
 	        <% } %>
         <% } %>
     </div>
+            </div>
+        </form>
+       
 </body>
 <script src="../../public/lib/ckeditor/ckeditor.js"></script>
 <script src="../../public/js/validation.js"></script>
