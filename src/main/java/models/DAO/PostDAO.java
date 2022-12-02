@@ -1,6 +1,6 @@
 package models.DAO;
 
-import java.util.ArrayList;import org.hibernate.validator.internal.util.logging.formatter.ObjectArrayFormatter;
+import java.util.ArrayList;
 
 import core.Mapper.ResultSetMapper.PostResultSetMapper;
 import models.Bean.Post;
@@ -75,7 +75,8 @@ public class PostDAO extends BaseDAO<Post>{
 				VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 		""";
 		return this.executeQuery(query, new Object[] { post.getID(), post.getName(), post.getContent(), post.getImage(), post.getViewCount(), post.getTotalTime(), post.getCreatedAt(), post.getUpdatedAt(), post.getAuthorID(), post.getTagID() });
-	}
+	} 
+	
 	public boolean updatePost(Post post) {
 		String query = """	
 				UPDATE POST SET NAME = ?, IMAGE = ?, CONTENT = ?, UPDATEDAT = ?, TAGID = ?
@@ -83,6 +84,7 @@ public class PostDAO extends BaseDAO<Post>{
 		""";
 		return this.executeQuery(query, new Object[] { post.getName(), post.getImage(), post.getContent(), post.getUpdatedAt(), post.getTagID(), post.getID() });
 	}
+	
 	public ArrayList<Post> getByAuthor(String authorId) {
 		String query = """
 				SELECT POST.*, USER.NAME AS 'AUTHOR', TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
@@ -92,5 +94,27 @@ public class PostDAO extends BaseDAO<Post>{
 				WHERE AUTHORID = ?
 		""";
 		return this.getRecordArray(query, new Object[] { authorId });
+	}
+	
+	public ArrayList<Post> getLastedPost() {
+		return this.getRecordArray("""
+				SELECT POST.*, TAG.NAME AS 'TAG', USER.NAME AS 'AUTHOR', USER.AVATAR AS 'AVATAR' FROM POST INNER JOIN
+				(
+					SELECT POST.ID, MAX(STATEHISTORY.AT) AS 'LASTED' FROM STATEHISTORY 
+					INNER JOIN POST
+					ON STATEHISTORY.POSTID = POST.ID
+					GROUP BY POST.ID
+				) AS A
+				ON POST.ID = A.ID
+				INNER JOIN STATEHISTORY
+				ON POST.ID = STATEHISTORY.POSTID
+				INNER JOIN TAG
+				ON TAG.ID = POST.TAGID
+				INNER JOIN USER
+				ON USER.ID = POST.AUTHORID
+				WHERE STATEHISTORY.AT = A.LASTED AND STATEHISTORY.STATE = 1
+				ORDER BY CREATEDAT DESC
+				LIMIT 6
+		""");
 	}
 }

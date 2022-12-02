@@ -25,7 +25,9 @@ public class HomeServlet extends BaseServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String keyword = request.getParameter("keyword") != null ? (String)request.getParameter("keyword") : "";
 		ArrayList<Post> posts = postBO.getByFilter(keyword, null, 1, "");
+		ArrayList<Post> lastedPosts = postBO.getLastedPost();
 		request.setAttribute("posts", posts);
+		request.setAttribute("lastedPosts", lastedPosts);
 		request.getRequestDispatcher("/views/home/home.jsp").forward(request, response);
 	}
 

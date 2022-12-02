@@ -94,6 +94,7 @@ public class PostBO extends BaseBO{
 		}
 		return false;
 	}
+	
 	public boolean updatePost(Post post) {
 		if(post == null) {
 			return false;
@@ -106,6 +107,7 @@ public class PostBO extends BaseBO{
 		}
 		return false;
 	}
+	
 	public boolean publishPost(String id) {
 		Post post = postDAO.getById(id);
 		if (post == null)
@@ -121,12 +123,13 @@ public class PostBO extends BaseBO{
 		}
 		return false;
 	}
+	
 	public boolean banPost(String id) {
 		Post post = postDAO.getById(id);
 		if (post == null)
 			return false;
 		State state = stateDAO.getCurrentStateOfPost(id);
-		if (state.getState() == PostState.Publish) {
+		if (state.getState() == PostState.Publish || state.getState() == PostState.Pending) {
 			State newState = new State();
 			newState.setId(generateID());
 			state.setState(PostState.Ban);
@@ -136,7 +139,12 @@ public class PostBO extends BaseBO{
 		}
 		return false;
 	}
+	
 	public ArrayList<Post> getByAuthor(String authorId) {
 		return postDAO.getByAuthor(authorId);
+	}
+	
+	public ArrayList<Post> getLastedPost() {
+		return postDAO.getLastedPost();
 	}
 }

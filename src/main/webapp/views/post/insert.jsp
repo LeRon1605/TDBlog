@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../public/css/admin_insert_problem.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Thêm bài tập</title>
+    <title>Thêm bài viết</title>
     <style>
     	input[type="file"] {
 		    display: none !important;
@@ -59,7 +59,7 @@
             
             <div class="form-group">
                 <label for="title" class="form-label">Tiêu đề bài viết</label>
-                <input id="title" name="title" type="text" placeholder="Nhập tên bài tập" class="form-control">
+                <input id="title" name="title" type="text" placeholder="Nhập tên bài viết" class="form-control">
                 <span class="form-message"></span>
             </div>
 

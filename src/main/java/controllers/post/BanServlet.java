@@ -31,9 +31,9 @@ public class BanServlet extends BaseServlet {
 				else {
 					boolean result = postBO.banPost(id);
 					if (result) {
-						response.sendRedirect("/posts/update?success=" + "Duyệt bài viết thành công&id=" + post.getID());
+						response.sendRedirect("/posts/update?success=" + "Successfully ban this post&id=" + post.getID());
 					}else {
-						response.sendRedirect("/posts/update?error=" + "Duyệt bài viết thất bại&id=" + post.getID());
+						response.sendRedirect("/posts/update?error=" + "Cannot ban this post&id=" + post.getID());
 					}
 				}
 			}

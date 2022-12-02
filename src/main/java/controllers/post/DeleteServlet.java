@@ -23,21 +23,22 @@ public class DeleteServlet extends BaseServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
-		if(this.authContext.isInRole("ADMIN")) {
-			String id = request.getParameter("id");
-			Post post = postBO.getById(id);
-			if(post == null) {
-				response.sendRedirect("/page-not-found");
-			} else {
+		String id = request.getParameter("id");
+		String returnUrl = request.getParameter("returnUrl");
+		Post post = postBO.getById(id);
+		if (post == null) {
+			response.sendRedirect("/page-not-found");
+		}else {
+			if (this.authContext.isAuthenticated() && (this.authContext.isInRole("ADMIN") || this.authContext.getClaim("UserID").getValue().equals(post.getAuthorID()))) {
 				boolean result = postBO.deletePost(id);
-				if(result) {
-					response.sendRedirect("/admin");
-				} else {
+				if (result) {
+					response.sendRedirect(returnUrl);
+				}else {
 					response.sendRedirect("/page-not-found");
 				}
-			} 
-		} else {
-			request.getRequestDispatcher("/views/errors/unauthorized.jsp").forward(request, response);
+			}else {
+				request.getRequestDispatcher("/views/errors/unauthorized.jsp").forward(request, response);
+			}
 		}
 	}
 

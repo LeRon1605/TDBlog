@@ -27,10 +27,10 @@
                     </div>
                 </div>
                 <div class="header__news-action flex items-center">
-                    <form action="" class="container__body-form-search relative">
+                    <form action="/home" class="container__body-form-search relative">
                         <input type="text"
-                            class="container__body-form-input  border-2 border-solid w-60 rounded-3xl h-10 inline-block pl-4 pb-1 drop-shadow-lg"
-                            placeholder="Tìm kiếm">
+                            class="container__body-form-input  border-2 border-solid w-60 rounded-3xl h-10 inline-block pl-4 pb-1"
+                            placeholder="Tìm kiếm" name="keyword">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass absolute right-5 top-3"></i></button>
                     </form>
                     
@@ -56,18 +56,15 @@
                                     </div>
                                 </div>
                                 <div class="header__news-subUser-container border-y border-solid border-gray-300 my-2">
+                                    <% if (context.isInRole("ADMIN")) { %>
+                                    	<div class="header__news-subUser-item p-3 hover:bg-gray-300 mx-2">
+                                        	<i class="fa-regular fa-bookmark text-[#161616] w-5"></i>
+                                        	<a href="/admin" class="header__news-subUser-text text-[#161616]">Quản lí</a>
+                                   	 	</div>
+                                    <% } %>
                                     <div class="header__news-subUser-item p-3 hover:bg-gray-300 mx-2 mt-2">
                                         <i class="fa-solid fa-pen-to-square text-[#161616] w-5"></i>
                                         <a href="/me/posts" class="header__news-subUser-text text-[#161616]">Bài viết của tôi</a>
-                                    </div>
-                                    <div class="header__news-subUser-item p-3 hover:bg-gray-300 mx-2">
-                                        <i class="fa-regular fa-bookmark text-[#161616] w-5"></i>
-                                        <a href="" class="header__news-subUser-text text-[#161616]">Nháp của tôi</a>
-                                    </div>
-                                    <div class="header__news-subUser-item p-3 hover:bg-gray-300 mx-2 mb-2">
-                                        <i class="fa-solid fa-gear text-[#161616] w-5"></i>
-                                        <a href="" class="header__news-subUser-text text-[#161616] ">Tùy chỉnh tài
-                                            khoản</a>
                                     </div>
                                 </div>
                                 <div class="header__news-subUser-footing">

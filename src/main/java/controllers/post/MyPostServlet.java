@@ -24,7 +24,8 @@ public class MyPostServlet extends BaseServlet {
 		String authorId = this.authContext.getClaim("UserID").getValue();
 		String sortBy = request.getParameter("sortBy") != null ? (String)request.getParameter("sortBy") : "";
 		String keyword = request.getParameter("keyword") != null ? (String)request.getParameter("keyword") : "";
-		ArrayList<Post> posts = postBO.getByFilter(keyword, authorId, -1, sortBy);
+		int state = request.getParameter("state") != null ? Integer.parseInt(request.getParameter("state")) : -1;
+		ArrayList<Post> posts = postBO.getByFilter(keyword, authorId, state, sortBy);
 		request.setAttribute("posts", posts);
 		request.getRequestDispatcher("/views/post/my-post.jsp").forward(request, response);
 	}

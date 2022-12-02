@@ -114,6 +114,10 @@
 	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
 	               	<button class="form-submit" type="submit">Duyệt bài viết</button>
 	           	</form>
+	           	<form method="POST" action="/posts/ban">
+	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
+	               	<button class="form-submit" type="submit">Cấm bài viết</button>
+	           	</form>
 	       	<% } else if (post.getState().equals("Đang phát hành")) {%>
 				<form method="POST" action="/posts/ban">
 	         		<input type="hidden" value="<%= post.getID()%>" name="id"/>
