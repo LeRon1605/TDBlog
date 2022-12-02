@@ -49,6 +49,7 @@ public class LoginServlet extends BaseServlet {
 					new Claim("UserID", user.getID()),
 					new Claim("Username", user.getUsername()),
 					new Claim("Fullname", user.getName()),
+					new Claim("Avatar", user.getAvatar()),
 					new Claim("Role", roleBO.getById(user.getRoleID()).getName())
 				});
 				if (result)

@@ -22,6 +22,7 @@ public class Post {
 	@NotNull(message = "Tác giả bài viết không được để trống")
 	private String authorID;
 	private String author;
+	private String authorAvatar;
 	@NotNull(message = "Thể loại bài viết không được để trống")
 	private String tagID;
 	private String tag;
@@ -66,6 +67,9 @@ public class Post {
 	public String getImage() {
 		return image;
 	}
+	public String getAuthorAvatar() {
+		return authorAvatar;
+	}
 	
 	public void setID(String iD) {
 		ID = iD;
@@ -105,5 +109,8 @@ public class Post {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public void setAuthorAvatar(String authorAvatar) {
+		this.authorAvatar = authorAvatar;
 	}
 }

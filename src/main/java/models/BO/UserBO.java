@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 import core.Hash.MD5;
@@ -27,8 +28,8 @@ public class UserBO extends BaseBO{
 			return false;
 		}
 			
-		
 		user.setID(generateID());
+		user.setAvatar("/public/uploads/avatar_" + (new Random().nextInt(8) + 1) + ".png");
 		user.setPassword(MD5.Hash(user.getPassword()));
 		user.setRoleID(roleDAO.getByName("USER").getID());
 		user.setRegisteredAt(Timestamp.from(Instant.now()));

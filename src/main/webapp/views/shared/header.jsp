@@ -44,12 +44,12 @@
 					<% AuthContext context = new AuthContext(request); %>
 					<% if (context.isAuthenticated()) { %>
 						<div class="header__news-user relative">
-                            <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="w-12 h-12 rounded-full cursor-pointer">
+                            <img src="<%= context.getClaim("Avatar").getValue() %>" alt="" class="w-12 h-12 rounded-full cursor-pointer">
                             
                             
                             <div class="header__news-subUser absolute bg-[#fff] w-[300px] right-0 top-16 shadow-lg shadow-gray-600 rounded-sm hidden">
                                 <div class="header__news-subUser-heading flex items-center p-3">
-                                    <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="header__news-subUser-img h-12 w-12 mr-4 rounded-full">
+                                    <img src="<%= context.getClaim("Avatar").getValue() %>" alt="" class="header__news-subUser-img h-12 w-12 mr-4 rounded-full">
                                     <div class="header__news-subUser-info w-48">
                                         <a href="" class="header__news-subUser-name block "><%= context.getClaim("Username").getValue() %></a>
                                         <a href="" class="header__news-subUser-email block"><%= context.getClaim("Fullname").getValue() %></a>

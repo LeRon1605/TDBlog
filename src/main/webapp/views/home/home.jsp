@@ -60,9 +60,9 @@
                                                 </div>
                                                 <a href="/posts?id=<%= posts.get(i).getID() %>" class="container__header-item-title inline-block text-base font-medium my-1"><%= posts.get(i).getName() %></a>
                                                 <span class="container__header-item-desc text-xs max-h-5"><%= posts.get(i).getContent() %></span>
-                                                <div class="container__header-item-bottom flex justify-between items-end mt-2">
-                                                    <div class="container__header-item-owner flex items-end">
-                                                        <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="item__owner-img w-10 h-10 rounded-full mr-4 ">
+                                                <div class="container__header-item-bottom flex justify-between items-center mt-2">
+                                                    <div class="container__header-item-owner flex items-center">
+                                                        <img src="<%= posts.get(i).getAuthorAvatar() %>" alt="" class="item__owner-img w-10 h-10 rounded-full mr-4 ">
                                                         <a href="" class="item__owner-name text-[16px]"><%= posts.get(i).getAuthor() %></a>
                                                     </div>
                                                     <div class="container__header-item-view">
@@ -107,9 +107,9 @@
                                                 </div>
                                                 <a href="/posts?id=<%= posts.get(i).getID() %>" class="container__body-item-title inline-block text-base font-medium my-1"><%= posts.get(i).getName() %></a>
                                                 <span class="container__body-item-desc text-xs max-h-5"><%= posts.get(i).getContent() %></span>
-                                                <div class="container__body-item-bottom flex justify-between items-end mt-2">
-                                                    <div class="container__body-item-owner flex items-end">
-                                                        <img src="https://spiderum.com/banner_ipad.39cef009ae5fb6ad90c9.png" alt="" class="item__owner-img w-10 h-10 rounded-full mr-4 ">
+                                                <div class="container__body-item-bottom flex justify-between items-center mt-2">
+                                                    <div class="container__body-item-owner flex items-center">
+                                                        <img src="<%= posts.get(i).getAuthorAvatar() %>" alt="" class="item__owner-img w-10 h-10 rounded-full mr-4 ">
                                                         <a href="" class="item__owner-name text-[16px]"><%= posts.get(i).getAuthor() %></a>
                                                     </div>
                                                     <div class="container__body-item-view">

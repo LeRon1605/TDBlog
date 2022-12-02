@@ -22,6 +22,7 @@ public class User {
 	@Size(min = 8, message = "Mật khẩu có độ dài ít nhất 8 kí tự")
 	private String password;
 	
+	private String avatar;	
 	private Timestamp registeredAt;
 	private String roleID;
 	
@@ -43,6 +44,9 @@ public class User {
 	public String getRoleID() {
 		return roleID;
 	}
+	public String getAvatar() {
+		return avatar;
+	}
 	
 	public void setID(String ID) {
 		this.ID = ID;
@@ -62,5 +66,7 @@ public class User {
 	public void setRoleID(String roleID) {
 		this.roleID = roleID;
 	}
-	
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 }

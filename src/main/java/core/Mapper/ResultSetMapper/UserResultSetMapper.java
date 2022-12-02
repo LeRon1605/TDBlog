@@ -16,6 +16,7 @@ public class UserResultSetMapper implements IResultSetMapper<User>{
 			user.setID(row.getString("ID"));
 			user.setName(row.getString("NAME"));
 			user.setUsername(row.getString("USERNAME"));
+			user.setAvatar(row.getString("AVATAR"));
 			user.setPassword(row.getString("PASSWORD"));
 			user.setRegisteredAt(row.getTimestamp("REGISTEREDAT"));
 			user.setRoleID(row.getString("ROLEID"));

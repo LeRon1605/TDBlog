@@ -12,7 +12,7 @@ public class PostDAO extends BaseDAO<Post>{
 	
 	public ArrayList<Post> getByFilter(String keyword, String authorId, String sortBy) {
 		String query = """
-				SELECT POST.*, USER.NAME AS 'AUTHOR', TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
+				SELECT POST.*, USER.NAME AS 'AUTHOR', USER.AVATAR AS 'AVATAR' , TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
 				ON POST.TAGID = TAG.ID
 				INNER JOIN USER
 				ON POST.AUTHORID = USER.ID	
@@ -45,7 +45,7 @@ public class PostDAO extends BaseDAO<Post>{
   
 	public Post getWithTagAndAuthor(String id) {
 		String query = """
-				SELECT POST.*, USER.NAME AS 'AUTHOR', TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
+				SELECT POST.*, USER.NAME AS 'AUTHOR', USER.AVATAR AS 'AVATAR' , TAG.NAME AS 'TAG' FROM POST INNER JOIN TAG
 				ON POST.TAGID = TAG.ID
 				INNER JOIN USER
 				ON POST.AUTHORID = USER.ID 
