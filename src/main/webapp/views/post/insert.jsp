@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../public/css/admin_insert_problem.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800&family=Qwigley&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
     <title>Thêm bài viết</title>
     <style>
     	input[type="file"] {
@@ -97,7 +98,6 @@
         </form>
     </div>
 </body>
-<script src="../../public/lib/ckeditor/ckeditor.js"></script>
 <script src="../../public/js/validation.js"></script>
 <script src="../../public/js/post_insert.js"></script>
 </html>

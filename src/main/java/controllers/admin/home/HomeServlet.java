@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controllers.BaseServlet;
+import core.Cache.InMemoryCache;
 import models.BO.PostBO;
 import models.BO.StatisticBO;
 import models.BO.UserBO;
@@ -38,8 +39,22 @@ public class HomeServlet extends BaseServlet {
 		
 		Date now = new Date();
 		
-		ArrayList<Statistic> userStatistic = statisticBO.getNewUserInRange(calendar.getTime(), now);
-		ArrayList<StateStatistic> stateStatistic = statisticBO.getStateInRange(calendar.getTime(), now);
+		ArrayList<Statistic> userStatistic;
+		if (InMemoryCache.getInstance().get("userStatistic") != null)
+			userStatistic = InMemoryCache.getInstance().get("userStatistic");
+		else
+		{
+			userStatistic = statisticBO.getNewUserInRange(calendar.getTime(), now);
+			InMemoryCache.getInstance().put("userStatistic", userStatistic, 60 * 3);
+		}
+		ArrayList<StateStatistic> stateStatistic;
+		if (InMemoryCache.getInstance().get("stateStatistic") != null)
+			stateStatistic = InMemoryCache.getInstance().get("stateStatistic");
+		else
+		{
+			stateStatistic = statisticBO.getStateInRange(calendar.getTime(), now);
+			InMemoryCache.getInstance().put("stateStatistic", stateStatistic, 60 * 3);
+		}
 		ArrayList<Post> posts = postBO.getByFilter(keyword, null, state, sortBy);
 		
 		request.setAttribute("stateStatistic", stateStatistic);

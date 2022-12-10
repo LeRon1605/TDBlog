@@ -23,6 +23,7 @@ public class HomeServlet extends BaseServlet{
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String keyword = request.getParameter("keyword") != null ? (String)request.getParameter("keyword") : "";
 		ArrayList<Post> posts = postBO.getByFilter(keyword, null, 1, "");
 		ArrayList<Post> lastedPosts = postBO.getLastedPost();

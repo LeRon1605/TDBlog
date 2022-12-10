@@ -67,7 +67,7 @@
                                                 <div class="container__header-item-bottom flex justify-between items-center mt-2">
                                                     <div class="container__header-item-owner flex items-center">
                                                         <img src="<%= lastedPosts.get(i).getAuthorAvatar() %>" alt="" class="item__owner-img w-10 h-10 rounded-full mr-4 ">
-                                                        <a href="" class="item__owner-name text-[16px]"><%= lastedPosts.get(i).getAuthor() %></a>
+                                                        <a href="" class="item__owner-name text-[14px]"><%= lastedPosts.get(i).getAuthor() %></a>
                                                     </div>
                                                     <div class="container__header-item-view">
                                                         <span class="container__header-item-view-amount text-[12px]"><%= lastedPosts.get(i).getViewCount() %></span>
@@ -117,7 +117,7 @@
                                                 <div class="container__body-item-bottom flex justify-between items-center mt-2">
                                                     <div class="container__body-item-owner flex items-center">
                                                         <img src="<%= posts.get(i).getAuthorAvatar() %>" alt="" class="item__owner-img w-10 h-10 rounded-full mr-4 ">
-                                                        <a href="" class="item__owner-name text-[16px]"><%= posts.get(i).getAuthor() %></a>
+                                                        <a href="" class="item__owner-name text-[14px]"><%= posts.get(i).getAuthor() %></a>
                                                     </div>
                                                     <div class="container__body-item-view">
                                                         <span class="container__body-item-view-amount text-[12px]"><%= posts.get(i).getViewCount() %></span>
